@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Algo muy especial</title>
+
+<style>
+
+/* =========================================================
+   COLORES GENERALES
+========================================================= */
+
+:root{
+    --cream:#fff9f3;
+    --cream-soft:#f8eee5;
+    --cream-dark:#f1dfd3;
+
+    --brown:#795346;
+    --brown-dark:#674437;
+    --brown-soft:#9d7563;
+
+    --pink:#c99482;
+    --pink-light:#e2c0b1;
+
+    --white:#fffdf9;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    overflow-x:hidden;
+
+    background:var(--cream);
+
+    color:var(--brown);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.cover{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.12),
+            transparent 48%
+        ),
+        linear-gradient(
+            180deg,
+            #c9a38f 0%,
+            #cba691 48%,
+            #d4af9c 100%
+        );
+}
+
+
+/* =========================================================
+   CORAZONES DEL CIELO
+========================================================= */
+
+.sky-heart{
+
+    position:absolute;
+
+    color:#fff5ed;
+
+    opacity:.72;
+
+    font-size:22px;
+
+    pointer-events:none;
+
+    animation:
+        floatingHeart 5s ease-in-out infinite;
+}
+
+.sky-heart:nth-child(1){
+    top:12%;
+    left:8%;
+    font-size:18px;
+}
+
+.sky-heart:nth-child(2){
+    top:20%;
+    left:20%;
+    font-size:13px;
+    animation-delay:1s;
+}
+
+.sky-heart:nth-child(3){
+    top:10%;
+    right:16%;
+    font-size:18px;
+    animation-delay:1.5s;
+}
+
+.sky-heart:nth-child(4){
+    top:30%;
+    right:8%;
+    font-size:14px;
+    animation-delay:2.3s;
+}
+
+.sky-heart:nth-child(5){
+    bottom:22%;
+    left:11%;
+    font-size:20px;
+    animation-delay:.7s;
+}
+
+.sky-heart:nth-child(6){
+    bottom:15%;
+    right:19%;
+    font-size:16px;
+    animation-delay:2s;
+}
+
+.sky-heart:nth-child(7){
+    top:43%;
+    left:5%;
+    font-size:11px;
+    animation-delay:3s;
+}
+
+.sky-heart:nth-child(8){
+    top:50%;
+    right:5%;
+    font-size:21px;
+    animation-delay:1.7s;
+}
+
+.sky-heart:nth-child(9){
+    bottom:12%;
+    left:35%;
+    font-size:12px;
+    animation-delay:2.7s;
+}
+
+@keyframes floatingHeart{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+        opacity:.45;
+    }
+
+    50%{
+        transform:
+            translateY(-12px)
+            rotate(6deg);
+
+        opacity:.9;
+    }
+}
+
+
+/* =========================================================
+   PEQUEÑAS ESTRELLAS
+========================================================= */
+
+.star{
+
+    position:absolute;
+
+    color:#fffaf4;
+
+    font-size:15px;
+
+    opacity:.7;
+
+    animation:
+        sparkle 3.5s ease-in-out infinite;
+}
+
+.star.s1{
+    top:17%;
+    left:30%;
+}
+
+.star.s2{
+    top:13%;
+    right:32%;
+    animation-delay:1s;
+}
+
+.star.s3{
+    bottom:28%;
+    right:26%;
+    animation-delay:1.7s;
+}
+
+.star.s4{
+    bottom:20%;
+    left:25%;
+    animation-delay:2.4s;
+}
+
+@keyframes sparkle{
+
+    0%,100%{
+        opacity:.25;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   NUBES SUAVES
+========================================================= */
+
+.cloud{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    opacity:.5;
+}
+
+.cloud span{
+
+    position:absolute;
+
+    display:block;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffaf5 0%,
+            #f6ece4 55%,
+            #e8d8cd 100%
+        );
+
+    border-radius:50%;
+
+    box-shadow:
+        inset -7px -6px 12px rgba(120,80,65,.08),
+        inset 7px 5px 12px rgba(255,255,255,.4);
+}
+
+
+/* nube izquierda */
+
+.cloud-left{
+
+    width:250px;
+    height:110px;
+
+    left:-60px;
+    top:90px;
+}
+
+.cloud-left .c1{
+    width:120px;
+    height:80px;
+    left:10px;
+    bottom:5px;
+}
+
+.cloud-left .c2{
+    width:120px;
+    height:95px;
+    left:85px;
+    bottom:0;
+}
+
+.cloud-left .c3{
+    width:95px;
+    height:70px;
+    left:160px;
+    bottom:5px;
+}
+
+
+/* nube derecha */
+
+.cloud-right{
+
+    width:270px;
+    height:125px;
+
+    right:-60px;
+    top:75px;
+}
+
+.cloud-right .c1{
+    width:130px;
+    height:90px;
+    left:0;
+    bottom:0;
+}
+
+.cloud-right .c2{
+    width:140px;
+    height:105px;
+    left:90px;
+    bottom:0;
+}
+
+.cloud-right .c3{
+    width:100px;
+    height:75px;
+    left:170px;
+    bottom:5px;
+}
+
+
+/* =========================================================
+   CONTENIDO DE PORTADA
+========================================================= */
+
+.cover-content{
+
+    position:relative;
+
+    z-index:10;
+
+    width:min(850px,90%);
+
+    text-align:center;
+
+    padding:30px 0;
+}
+
+
+/* pequeño encabezado */
+
+.cover-eyebrow{
+
+    margin-bottom:24px;
+
+    color:#fff9f3;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+
+/* título */
+
+.cover-title{
+
+    margin:0;
+
+    color:#fffaf5;
+
+    font-weight:400;
+
+    line-height:1.05;
+
+    font-size:
+        clamp(
+            43px,
+            6.7vw,
+            82px
+        );
+}
+
+.cover-title span{
+
+    display:block;
+}
+
+.cover-title .love{
+
+    color:#70493c;
+
+    font-style:italic;
+
+    margin-top:8px;
+}
+
+
+/* corazón grande */
+
+.cover-heart{
+
+    margin:15px 0 10px;
+
+    color:#fff7f0;
+
+    font-size:31px;
+
+    animation:
+        heartBeat 2.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.13);
+    }
+}
+
+
+/* descripción */
+
+.cover-description{
+
+    max-width:650px;
+
+    margin:20px auto 30px;
+
+    color:#fff9f4;
+
+    font-size:20px;
+
+    line-height:1.45;
+}
+
+
+/* botón */
+
+.cover-button{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:275px;
+
+    padding:15px 30px;
+
+    border:1.5px solid #fffaf4;
+
+    border-radius:50px;
+
+    background:transparent;
+
+    color:#fffaf4;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.cover-button:hover{
+
+    background:#fffaf4;
+
+    color:#765044;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   SEGUNDA SECCIÓN
+========================================================= */
+
+.letter{
+
+    position:relative;
+
+    min-height:700px;
+
+    padding:
+        80px 20px
+        90px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #fffaf5 0%,
+            #faf0e8 70%,
+            #f2dfd3 100%
+        );
+}
+
+
+/* etiqueta */
+
+.section-label{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:18px;
+
+    color:#815849;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+}
+
+.section-label::before,
+.section-label::after{
+
+    content:"";
+
+    width:55px;
+
+    height:1px;
+
+    background:#c9a18d;
+}
+
+
+/* título */
+
+.letter-title{
+
+    margin:
+        15px 0
+        10px;
+
+    color:#765044;
+
+    font-size:
+        clamp(
+            43px,
+            6vw,
+            65px
+        );
+
+    font-weight:400;
+
+    font-style:italic;
+}
+
+
+/* texto */
+
+.letter-subtitle{
+
+    margin:0 auto;
+
+    color:#765044;
+
+    font-size:20px;
+
+    line-height:1.4;
+}
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+.envelope-area{
+
+    position:relative;
+
+    width:450px;
+    max-width:95vw;
+
+    height:355px;
+
+    margin:5px auto 0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* corazones alrededor */
+
+.envelope-hearts span{
+
+    position:absolute;
+
+    color:#bd8c77;
+
+    font-size:22px;
+
+    opacity:.85;
+
+    animation:
+        envelopeHeart 3s ease-in-out infinite;
+}
+
+.envelope-hearts .h1{
+    left:15px;
+    top:90px;
+}
+
+.envelope-hearts .h2{
+    left:0;
+    top:155px;
+    animation-delay:.5s;
+}
+
+.envelope-hearts .h3{
+    left:38px;
+    bottom:72px;
+    animation-delay:1.2s;
+}
+
+.envelope-hearts .h4{
+    right:15px;
+    top:90px;
+    animation-delay:.4s;
+}
+
+.envelope-hearts .h5{
+    right:0;
+    top:160px;
+    animation-delay:1.4s;
+}
+
+.envelope-hearts .h6{
+    right:45px;
+    bottom:70px;
+    animation-delay:.8s;
+}
+
+@keyframes envelopeHeart{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+
+/* sobre */
+
+.envelope{
+
+    position:relative;
+
+    width:335px;
+
+    height:220px;
+
+    cursor:pointer;
+
+    perspective:900px;
+
+    filter:
+        drop-shadow(
+            0 14px 14px
+            rgba(100,70,55,.15)
+        );
+}
+
+
+/* cuerpo */
+
+.envelope-back{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f0dccc,
+            #e6c8b6
+        );
+
+    border:1px solid #d4ad97;
+}
+
+
+/* triángulos laterales */
+
+.envelope-left{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:
+        167px solid #e7c8b6;
+
+    border-top:
+        110px solid transparent;
+
+    border-bottom:
+        110px solid transparent;
+
+    z-index:4;
+}
+
+.envelope-right{
+
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-right:
+        167px solid #e7c8b6;
+
+    border-top:
+        110px solid transparent;
+
+    border-bottom:
+        110px solid transparent;
+
+    z-index:4;
+}
+
+
+/* parte inferior */
+
+.envelope-bottom{
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:110px;
+
+    background:#e5c6b4;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 72%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index:5;
+}
+
+
+/* solapa */
+
+.envelope-flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:130px;
+
+    background:
+        linear-gradient(
+            155deg,
+            #f1ddce,
+            #e7c9b7
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 76%
+        );
+
+    transform-origin:top center;
+
+    z-index:8;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.75,.2,1);
+}
+
+
+/* corazón */
+
+.envelope-seal{
+
+    position:absolute;
+
+    z-index:10;
+
+    left:50%;
+    top:94px;
+
+    transform:translateX(-50%);
+
+    color:#9d6b58;
+
+    font-size:42px;
+
+    transition:
+        opacity .5s ease,
+        transform .7s ease;
+}
+
+
+/* texto */
+
+.envelope-label{
+
+    position:absolute;
+
+    z-index:9;
+
+    bottom:20px;
+
+    width:100%;
+
+    color:#765044;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+
+/* abrir */
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+}
+
+.envelope.open .envelope-seal{
+
+    opacity:0;
+
+    transform:
+        translateX(-50%)
+        translateY(-12px)
+        scale(.8);
+}
+
+
+/* instrucciones */
+
+.envelope-instruction{
+
+    margin-top:-15px;
+
+    color:#765044;
+
+    font-size:16px;
+
+    font-style:italic;
+}
+
+
+/* =========================================================
+   CORAZONES QUE SALEN DEL SOBRE
+========================================================= */
+
+.flying-heart{
+
+    position:fixed;
+
+    z-index:500;
+
+    pointer-events:none;
+
+    color:#b77f6b;
+
+    font-size:22px;
+
+    animation:
+        heartFly
+        2.7s
+        ease-out
+        forwards;
+}
+
+@keyframes heartFly{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            scale(.3)
+            rotate(0);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(var(--scale))
+            rotate(var(--rotation));
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   REVELACIÓN
+========================================================= */
+
+.reveal{
+
+    position:relative;
+
+    min-height:950px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #fffaf5 0%,
+            #f8ece2 72%,
+            #efd9ca 100%
+        );
+}
+
+
+/* =========================================================
+   MENSAJE FINAL
+========================================================= */
+
+.reveal-content{
+
+    position:relative;
+
+    z-index:10;
+
+    min-height:950px;
+
+    padding:
+        80px 25px
+        100px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+}
+
+
+/*
+   El contenido permanece invisible hasta
+   que las cortinas terminan los 6 segundos.
+*/
+
+.reveal-content.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* título */
+
+.reveal-title{
+
+    margin:0 0 25px;
+
+    max-width:900px;
+
+    color:#765044;
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            67px
+        );
+
+    line-height:1.05;
+
+    font-weight:400;
+
+    font-style:italic;
+}
+
+
+/* animalitos */
+
+.animals{
+
+    width:250px;
+
+    max-width:65vw;
+
+    margin:
+        5px 0
+        25px;
+
+    object-fit:contain;
+}
+
+
+/* mensaje */
+
+.final-message{
+
+    max-width:850px;
+
+    color:#765044;
+
+    font-size:
+        clamp(
+            17px,
+            2vw,
+            21px
+        );
+
+    line-height:1.65;
+}
+
+.final-message p{
+
+    margin:
+        0 0
+        20px;
+}
+
+.final-message .announcement{
+
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+.final-message .highlight{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin:
+        25px 0;
+}
+
+
+/* fotos */
+
+.photos{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    margin-top:25px;
+
+    flex-wrap:wrap;
+}
+
+.photo{
+
+    width:135px;
+    height:155px;
+
+    padding:
+        7px 7px
+        24px;
+
+    background:#fffaf4;
+
+    border:
+        1px solid
+        #d5b7a5;
+
+    box-shadow:
+        0 8px 18px
+        rgba(100,70,55,.13);
+}
+
+.photo:nth-child(1){
+    transform:rotate(-5deg);
+}
+
+.photo:nth-child(2){
+    transform:rotate(4deg);
+}
+
+.photo:nth-child(3){
+    transform:rotate(-3deg);
+}
+
+.photo img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+
+/* =========================================================
+   CORTINAS
+========================================================= */
+
+.curtains{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:100;
+
+    pointer-events:none;
+}
+
+
+/*
+   Las cortinas cubren completamente el mensaje.
+   Cada una ocupa más de la mitad.
+*/
+
+.curtain{
+
+    position:absolute;
+
+    top:0;
+
+    width:56vw;
+
+    height:100%;
+
+    filter:
+        drop-shadow(
+            0 4px 8px
+            rgba(70,45,35,.18)
+        );
+
+    /*
+       EXACTAMENTE 6 SEGUNDOS
+    */
+
+    transition:
+        transform
+        6s
+        cubic-bezier(
+            .77,
+            0,
+            .18,
+            1
+        );
+}
+
+
+/* izquierda */
+
+.curtain-left{
+
+    left:0;
+
+    transform:translateX(0);
+}
+
+
+/* derecha */
+
+.curtain-right{
+
+    right:0;
+
+    transform:
+        scaleX(-1)
+        translateX(0);
+}
+
+
+/* SVG */
+
+.curtain svg{
+
+    display:block;
+
+    width:100%;
+
+    height:100%;
+}
+
+
+/* abrir */
+
+.reveal.open .curtain-left{
+
+    transform:
+        translateX(-105%);
+}
+
+.reveal.open .curtain-right{
+
+    transform:
+        scaleX(-1)
+        translateX(-105%);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:700px){
+
+    .cover{
+
+        min-height:760px;
+    }
+
+    .cover-content{
+
+        width:92%;
+    }
+
+    .cover-title{
+
+        font-size:45px;
+    }
+
+    .cover-description{
+
+        font-size:18px;
+    }
+
+    .letter{
+
+        padding-top:60px;
+    }
+
+    .letter-title{
+
+        font-size:43px;
+    }
+
+    .letter-subtitle{
+
+        font-size:18px;
+    }
+
+    .envelope{
+
+        width:310px;
+        height:205px;
+    }
+
+    .envelope-area{
+
+        height:330px;
+    }
+
+    .reveal{
+
+        min-height:900px;
+    }
+
+    .reveal-content{
+
+        min-height:900px;
+
+        padding:
+            65px 20px
+            90px;
+    }
+
+    .animals{
+
+        width:220px;
+    }
+
+    .curtain{
+
+        width:72vw;
+    }
+
+    .final-message{
+
+        font-size:17px;
+    }
+
+    .final-message .announcement{
+
+        font-size:20px;
+    }
+
+}
+
+
+/* =========================================================
+   MÓVILES MUY PEQUEÑOS
+========================================================= */
+
+@media(max-width:420px){
+
+    .cover-title{
+
+        font-size:39px;
+    }
+
+    .cover-button{
+
+        min-width:250px;
+
+        padding:
+            14px 20px;
+    }
+
+    .envelope{
+
+        width:285px;
+        height:190px;
+    }
+
+    .envelope-left{
+
+        border-left-width:142px;
+        border-top-width:95px;
+        border-bottom-width:95px;
+    }
+
+    .envelope-right{
+
+        border-right-width:142px;
+        border-top-width:95px;
+        border-bottom-width:95px;
+    }
+
+    .photos{
+
+        gap:10px;
+    }
+
+    .photo{
+
+        width:100px;
+        height:120px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     PORTADA
+======================================================= -->
+
+<section class="cover" id="inicio">
+
+
+    <!-- corazones -->
+
+    <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
+    <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
+    <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
+    <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
+    <div class="sky-heart">♡</div>
+
+
+    <!-- estrellas -->
+
+    <div class="star s1">✦</div>
+    <div class="star s2">✦</div>
+    <div class="star s3">✦</div>
+    <div class="star s4">✦</div>
+
+
+    <!-- nubes -->
+
+    <div class="cloud cloud-left">
+
+        <span class="c1"></span>
+        <span class="c2"></span>
+        <span class="c3"></span>
+
+    </div>
+
+
+    <div class="cloud cloud-right">
+
+        <span class="c1"></span>
+        <span class="c2"></span>
+        <span class="c3"></span>
+
+    </div>
+
+
+    <!-- contenido -->
+
+    <div class="cover-content">
+
+
+        <div class="cover-eyebrow">
+            CON TODO NUESTRO AMOR
+        </div>
+
+
+        <h1 class="cover-title">
+
+            <span>
+                Aquí hay algo
+            </span>
+
+            <span class="love">
+                con amor para ustedes
+            </span>
+
+        </h1>
+
+
+        <div class="cover-heart">
+            ♥
+        </div>
+
+
+        <p class="cover-description">
+            Un momento muy especial
+            está a punto de comenzar…
+        </p>
+
+
+        <button
+            class="cover-button"
+            onclick="goToLetter()"
+        >
+            TENGO ALGO PARA USTEDES…
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CARTA
+======================================================= -->
+
+<section class="letter" id="letter">
+
+
+    <div class="section-label">
+        UNA PEQUEÑA PAUSA
+    </div>
+
+
+    <h2 class="letter-title">
+        Antes de continuar…
+    </h2>
+
+
+    <p class="letter-subtitle">
+        Hay algo que queremos decirles…
+    </p>
+
+
+    <div class="envelope-area">
+
+
+        <!-- corazones alrededor -->
+
+        <div class="envelope-hearts">
+
+            <span class="h1">♡</span>
+            <span class="h2">♥</span>
+            <span class="h3">♡</span>
+
+            <span class="h4">♡</span>
+            <span class="h5">♥</span>
+            <span class="h6">♡</span>
+
+        </div>
+
+
+        <!-- sobre -->
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openEnvelope()"
+        >
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-left"></div>
+
+            <div class="envelope-right"></div>
+
+            <div class="envelope-bottom"></div>
+
+            <div class="envelope-flap"></div>
+
+
+            <div class="envelope-seal">
+                ♡
+            </div>
+
+
+            <div class="envelope-label">
+                ALGO MUY ESPECIAL
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="envelope-instruction">
+        Toquen el sobre para abrirlo
+    </div>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     REVELACIÓN
+======================================================= -->
+
+<section class="reveal" id="reveal">
+
+
+    <!-- ===================================================
+         MENSAJE
+    ==================================================== -->
+
+    <div
+        class="reveal-content"
+        id="revealContent"
+    >
+
+
+        <h2 class="reveal-title">
+
+            👶🏽✨
+            <br>
+
+            ¡La familia crece!
+            
+            ✨👶🏽
+
+        </h2>
+
+
+        <!-- animalitos -->
+
+        <img
+            src="animalitos.png"
+            class="animals"
+            alt="Elefantito y jirafa"
+        >
+
+
+        <div class="final-message">
+
+
+            <p>
+                <strong>
+                    Julio César y yo tenemos un pequeño secreto
+                    que ya no podemos guardar… 💕
+                </strong>
+            </p>
+
+
+            <p class="highlight">
+                ¡Estamos esperando un bebé! 🍼🥰
+            </p>
+
+
+            <p>
+                Nuestros corazones están llenos de amor,
+                ilusión y felicidad al saber que pronto
+                llegará una personita que cambiará
+                nuestras vidas para siempre.
+            </p>
+
+
+            <p>
+                Prepárense para muchos abrazos,
+                sonrisas y una nueva razón para celebrar. ❤️
+            </p>
+
+
+            <p>
+                ¡Sí, van a ser tías-abuelas, tí@s,
+                prim@s! 👶🏽🎉
+            </p>
+
+
+            <p class="highlight">
+                Hagan campo para un@ más 🥰
+            </p>
+
+
+        </div>
+
+
+        <!-- fotos -->
+
+        <div class="photos">
+
+            <div class="photo">
+                <img
+                    src="foto1.jpeg"
+                    alt="Foto 1"
+                >
+            </div>
+
+            <div class="photo">
+                <img
+                    src="foto2.jpeg"
+                    alt="Foto 2"
+                >
+            </div>
+
+            <div class="photo">
+                <img
+                    src="foto3.jpeg"
+                    alt="Foto 3"
+                >
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ===================================================
+         CORTINAS
+    ==================================================== -->
+
+    <div class="curtains">
+
+
+        <!-- CORTINA IZQUIERDA -->
+
+        <div class="curtain curtain-left">
+
+            <svg
+                viewBox="0 0 600 1000"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+
+
+                <!-- cuerpo -->
+
+                <path
+                    d="
+                    M0 0
+                    H600
+                    V145
+                    C575 205 560 265 525 330
+                    C490 395 455 460 415 530
+                    C380 592 350 665 315 730
+                    C275 805 225 875 175 930
+                    C130 980 75 1000 0 1000
+                    Z
+                    "
+                    fill="#b98273"
+                />
+
+
+                <!-- luz -->
+
+                <path
+                    d="
+                    M35 0
+                    H115
+                    C125 190 115 375 85 570
+                    C65 710 35 865 0 945
+                    V0
+                    Z
+                    "
+                    fill="#d4a393"
+                    opacity=".55"
+                />
+
+
+                <!-- pliegue -->
+
+                <path
+                    d="
+                    M150 0
+                    C165 190 160 365 145 520
+                    C130 680 105 835 70 965
+                    L115 940
+                    C155 795 185 650 190 505
+                    C195 320 188 150 185 0
+                    Z
+                    "
+                    fill="#8f5f52"
+                    opacity=".75"
+                />
+
+
+                <!-- pliegue claro -->
+
+                <path
+                    d="
+                    M235 0
+                    C250 180 245 350 225 500
+                    C205 650 175 805 140 920
+                    L185 895
+                    C225 750 255 600 265 465
+                    C278 295 268 140 270 0
+                    Z
+                    "
+                    fill="#d09a89"
+                    opacity=".8"
+                />
+
+
+                <!-- pliegue oscuro -->
+
+                <path
+                    d="
+                    M325 0
+                    C340 165 335 330 315 470
+                    C292 640 260 785 220 865
+                    L270 825
+                    C320 675 345 515 355 375
+                    C365 230 355 100 360 0
+                    Z
+                    "
+                    fill="#916154"
+                    opacity=".7"
+                />
+
+
+                <!-- pliegue final -->
+
+                <path
+                    d="
+                    M420 0
+                    C440 160 430 300 405 430
+                    C375 585 335 710 300 800
+                    L355 745
+                    C405 615 445 470 460 330
+                    C475 195 465 90 470 0
+                    Z
+                    "
+                    fill="#d09c8b"
+                    opacity=".72"
+                />
+
+
+                <!-- borde -->
+
+                <path
+                    d="
+                    M560 130
+                    C525 300 460 470 390 610
+                    C320 750 230 900 155 965
+                    "
+                    fill="none"
+                    stroke="#805348"
+                    stroke-width="13"
+                    opacity=".45"
+                />
+
+
+                <!-- recogido -->
+
+                <ellipse
+                    cx="185"
+                    cy="700"
+                    rx="90"
+                    ry="45"
+                    fill="#a56f60"
+                />
+
+                <ellipse
+                    cx="185"
+                    cy="690"
+                    rx="80"
+                    ry="28"
+                    fill="#c58e7c"
+                />
+
+                <path
+                    d="
+                    M110 685
+                    C140 700 165 705 185 700
+                    C210 695 235 685 260 670
+                    "
+                    fill="none"
+                    stroke="#efd0c1"
+                    stroke-width="8"
+                    opacity=".55"
+                />
+
+
+            </svg>
+
+        </div>
+
+
+
+        <!-- CORTINA DERECHA -->
+
+        <div class="curtain curtain-right">
+
+            <svg
+                viewBox="0 0 600 1000"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+
+
+                <path
+                    d="
+                    M0 0
+                    H600
+                    V145
+                    C575 205 560 265 525 330
+                    C490 395 455 460 415 530
+                    C380 592 350 665 315 730
+                    C275 805 225 875 175 930
+                    C130 980 75 1000 0 1000
+                    Z
+                    "
+                    fill="#b98273"
+                />
+
+
+                <path
+                    d="
+                    M35 0
+                    H115
+                    C125 190 115 375 85 570
+                    C65 710 35 865 0 945
+                    V0
+                    Z
+                    "
+                    fill="#d4a393"
+                    opacity=".55"
+                />
+
+
+                <path
+                    d="
+                    M150 0
+                    C165 190 160 365 145 520
+                    C130 680 105 835 70 965
+                    L115 940
+                    C155 795 185 650 190 505
+                    C195 320 188 150 185 0
+                    Z
+                    "
+                    fill="#8f5f52"
+                    opacity=".75"
+                />
+
+
+                <path
+                    d="
+                    M235 0
+                    C250 180 245 350 225 500
+                    C205 650 175 805 140 920
+                    L185 895
+                    C225 750 255 600 265 465
+                    C278 295 268 140 270 0
+                    Z
+                    "
+                    fill="#d09a89"
+                    opacity=".8"
+                />
+
+
+                <path
+                    d="
+                    M325 0
+                    C340 165 335 330 315 470
+                    C292 640 260 785 220 865
+                    L270 825
+                    C320 675 345 515 355 375
+                    C365 230 355 100 360 0
+                    Z
+                    "
+                    fill="#916154"
+                    opacity=".7"
+                />
+
+
+                <path
+                    d="
+                    M420 0
+                    C440 160 430 300 405 430
+                    C375 585 335 710 300 800
+                    L355 745
+                    C405 615 445 470 460 330
+                    C475 195 465 90 470 0
+                    Z
+                    "
+                    fill="#d09c8b"
+                    opacity=".72
+                />
+
+
+                <path
+                    d="
+                    M560 130
+                    C525 300 460 470 390 610
+                    C320 750 230 900 155 965
+                    "
+                    fill="none"
+                    stroke="#805348"
+                    stroke-width="13"
+                    opacity=".45"
+                />
+
+
+                <ellipse
+                    cx="185"
+                    cy="700"
+                    rx="90"
+                    ry="45"
+                    fill="#a56f60"
+                />
+
+                <ellipse
+                    cx="185"
+                    cy="690"
+                    rx="80"
+                    ry="28"
+                    fill="#c58e7c"
+                />
+
+                <path
+                    d="
+                    M110 685
+                    C140 700 165 705 185 700
+                    C210 695 235 685 260 670
+                    "
+                    fill="none"
+                    stroke="#efd0c1"
+                    stroke-width="8"
+                    opacity=".55"
+                />
+
+
+            </svg>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   IR A LA CARTA
+========================================================= */
+
+function goToLetter(){
+
+    document
+        .getElementById("letter")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   ABRIR SOBRE
+========================================================= */
+
+let envelopeOpened = false;
+
+function openEnvelope(){
+
+    if(envelopeOpened){
+        return;
+    }
+
+    envelopeOpened = true;
+
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const reveal =
+        document.getElementById("reveal");
+
+    const revealContent =
+        document.getElementById("revealContent");
+
+
+    /* abrir sobre */
+
+    envelope.classList.add("open");
+
+
+    /* lanzar corazones */
+
+    createHearts();
+
+
+    /*
+       Dejamos que se vea la apertura
+       del sobre antes de pasar a las cortinas.
+    */
+
+    setTimeout(() => {
+
+        reveal.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },1200);
+
+
+    /*
+       Esperamos a que la página llegue
+       a la sección de revelación.
+    */
+
+    setTimeout(() => {
+
+
+        /*
+           EMPIEZAN A ABRIRSE LAS CORTINAS.
+
+           La animación CSS dura EXACTAMENTE
+           6 segundos.
+        */
+
+        reveal.classList.add("open");
+
+
+        /*
+           MUY IMPORTANTE:
+
+           El mensaje NO aparece mientras
+           las cortinas están abriéndose.
+
+           Esperamos los 6000ms completos.
+        */
+
+        setTimeout(() => {
+
+            revealContent.classList.add("show");
+
+        },6000);
+
+
+    },2200);
+
+}
+
+
+/* =========================================================
+   CORAZONES DEL SOBRE
+========================================================= */
+
+function createHearts(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+
+    const rect =
+        envelope.getBoundingClientRect();
+
+
+    const colors=[
+
+        "#b98273",
+        "#c58f7c",
+        "#d3a18e",
+        "#e0bbaa",
+        "#edd4c8",
+        "#a87361"
+
+    ];
+
+
+    /*
+       MUCHOS CORAZONES
+    */
+
+    for(let i=0;i<65;i++){
+
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.className =
+            "flying-heart";
+
+
+        heart.textContent =
+            Math.random() > .3
+            ? "♥"
+            : "♡";
+
+
+        heart.style.color =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        /*
+           Posición inicial
+        */
+
+        heart.style.left =
+            (
+                rect.left +
+                rect.width / 2 +
+                (Math.random()-.5)*80
+            ) + "px";
+
+
+        heart.style.top =
+            (
+                rect.top +
+                rect.height*.35
+            ) + "px";
+
+
+        /*
+           Dirección
+        */
+
+        heart.style.setProperty(
+            "--x",
+            (
+                (Math.random()-.5)*460
+            ) + "px"
+        );
+
+
+        heart.style.setProperty(
+            "--y",
+            (
+                -150 -
+                Math.random()*450
+            ) + "px"
+        );
+
+
+        heart.style.setProperty(
+            "--scale",
+            (
+                .55 +
+                Math.random()*1.25
+            )
+        );
+
+
+        heart.style.setProperty(
+            "--rotation",
+            (
+                -180 +
+                Math.random()*360
+            ) + "deg"
+        );
+
+
+        heart.style.animationDuration =
+            (
+                1.8 +
+                Math.random()*1.8
+            ) + "s";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        },5000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
