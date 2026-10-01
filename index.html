@@ -9,7 +9,7 @@
 <style>
 
 /* =========================================================
-   COLORES GENERALES
+   COLORES
 ========================================================= */
 
 :root{
@@ -87,7 +87,7 @@ body{
 
 
 /* =========================================================
-   CORAZONES DEL CIELO
+   CORAZONES DEL FONDO
 ========================================================= */
 
 .sky-heart{
@@ -107,7 +107,7 @@ body{
 }
 
 .sky-heart:nth-child(1){
-    top:12%;
+    top:11%;
     left:8%;
     font-size:18px;
 }
@@ -168,6 +168,27 @@ body{
     animation-delay:2.7s;
 }
 
+.sky-heart:nth-child(10){
+    top:35%;
+    left:31%;
+    font-size:15px;
+    animation-delay:1.3s;
+}
+
+.sky-heart:nth-child(11){
+    bottom:30%;
+    right:35%;
+    font-size:13px;
+    animation-delay:2.1s;
+}
+
+.sky-heart:nth-child(12){
+    top:62%;
+    left:19%;
+    font-size:18px;
+    animation-delay:3.2s;
+}
+
 @keyframes floatingHeart{
 
     0%,100%{
@@ -189,7 +210,7 @@ body{
 
 
 /* =========================================================
-   PEQUEÑAS ESTRELLAS
+   ESTRELLAS
 ========================================================= */
 
 .star{
@@ -244,7 +265,7 @@ body{
 
 
 /* =========================================================
-   NUBES SUAVES
+   NUBES
 ========================================================= */
 
 .cloud{
@@ -345,7 +366,7 @@ body{
 
 
 /* =========================================================
-   CONTENIDO DE PORTADA
+   CONTENIDO PORTADA
 ========================================================= */
 
 .cover-content{
@@ -359,24 +380,6 @@ body{
     text-align:center;
 
     padding:30px 0;
-}
-
-
-/* pequeño encabezado */
-
-.cover-eyebrow{
-
-    margin-bottom:24px;
-
-    color:#fff9f3;
-
-    font-family:Arial,sans-serif;
-
-    font-size:11px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
 }
 
 
@@ -415,15 +418,15 @@ body{
 }
 
 
-/* corazón grande */
+/* corazón */
 
 .cover-heart{
 
-    margin:15px 0 10px;
+    margin:18px 0 12px;
 
     color:#fff7f0;
 
-    font-size:31px;
+    font-size:35px;
 
     animation:
         heartBeat 2.5s ease-in-out infinite;
@@ -451,7 +454,7 @@ body{
 
     color:#fff9f4;
 
-    font-size:20px;
+    font-size:21px;
 
     line-height:1.45;
 }
@@ -466,7 +469,7 @@ body{
     align-items:center;
     justify-content:center;
 
-    min-width:275px;
+    min-width:280px;
 
     padding:15px 30px;
 
@@ -503,14 +506,14 @@ body{
 
 
 /* =========================================================
-   SEGUNDA SECCIÓN
+   CARTA
 ========================================================= */
 
 .letter{
 
     position:relative;
 
-    min-height:700px;
+    min-height:760px;
 
     padding:
         80px 20px
@@ -606,10 +609,11 @@ body{
 
     position:relative;
 
-    width:450px;
+    width:500px;
+
     max-width:95vw;
 
-    height:355px;
+    height:380px;
 
     margin:5px auto 0;
 
@@ -621,7 +625,7 @@ body{
 }
 
 
-/* corazones alrededor */
+/* corazones alrededor del sobre */
 
 .envelope-hearts span{
 
@@ -638,24 +642,24 @@ body{
 }
 
 .envelope-hearts .h1{
-    left:15px;
-    top:90px;
+    left:35px;
+    top:85px;
 }
 
 .envelope-hearts .h2{
-    left:0;
-    top:155px;
+    left:5px;
+    top:150px;
     animation-delay:.5s;
 }
 
 .envelope-hearts .h3{
-    left:38px;
+    left:45px;
     bottom:72px;
     animation-delay:1.2s;
 }
 
 .envelope-hearts .h4{
-    right:15px;
+    right:35px;
     top:90px;
     animation-delay:.4s;
 }
@@ -672,6 +676,20 @@ body{
     animation-delay:.8s;
 }
 
+.envelope-hearts .h7{
+    left:75px;
+    top:55px;
+    font-size:15px;
+    animation-delay:1.8s;
+}
+
+.envelope-hearts .h8{
+    right:80px;
+    top:60px;
+    font-size:16px;
+    animation-delay:2.2s;
+}
+
 @keyframes envelopeHeart{
 
     0%,100%{
@@ -684,15 +702,17 @@ body{
 }
 
 
-/* sobre */
+/* =========================================================
+   SOBRE PRINCIPAL
+========================================================= */
 
 .envelope{
 
     position:relative;
 
-    width:335px;
+    width:350px;
 
-    height:220px;
+    height:230px;
 
     cursor:pointer;
 
@@ -727,7 +747,7 @@ body{
 }
 
 
-/* triángulos laterales */
+/* izquierda */
 
 .envelope-left{
 
@@ -740,16 +760,19 @@ body{
     height:0;
 
     border-left:
-        167px solid #e7c8b6;
+        175px solid #e7c8b6;
 
     border-top:
-        110px solid transparent;
+        115px solid transparent;
 
     border-bottom:
-        110px solid transparent;
+        115px solid transparent;
 
     z-index:4;
 }
+
+
+/* derecha */
 
 .envelope-right{
 
@@ -762,13 +785,13 @@ body{
     height:0;
 
     border-right:
-        167px solid #e7c8b6;
+        175px solid #e7c8b6;
 
     border-top:
-        110px solid transparent;
+        115px solid transparent;
 
     border-bottom:
-        110px solid transparent;
+        115px solid transparent;
 
     z-index:4;
 }
@@ -784,7 +807,7 @@ body{
     bottom:0;
 
     width:100%;
-    height:110px;
+    height:115px;
 
     background:#e5c6b4;
 
@@ -811,7 +834,7 @@ body{
     left:0;
 
     width:100%;
-    height:130px;
+    height:135px;
 
     background:
         linear-gradient(
@@ -837,7 +860,7 @@ body{
 }
 
 
-/* corazón */
+/* corazón del sobre */
 
 .envelope-seal{
 
@@ -846,13 +869,13 @@ body{
     z-index:10;
 
     left:50%;
-    top:94px;
+    top:97px;
 
     transform:translateX(-50%);
 
     color:#9d6b58;
 
-    font-size:42px;
+    font-size:43px;
 
     transition:
         opacity .5s ease,
@@ -860,7 +883,7 @@ body{
 }
 
 
-/* texto */
+/* texto del sobre */
 
 .envelope-label{
 
@@ -900,7 +923,7 @@ body{
 }
 
 
-/* instrucciones */
+/* instrucción */
 
 .envelope-instruction{
 
@@ -943,13 +966,13 @@ body{
 
         transform:
             translate(0,0)
-            scale(.3)
+            scale(.2)
             rotate(0);
 
         opacity:0;
     }
 
-    15%{
+    10%{
         opacity:1;
     }
 
@@ -976,7 +999,7 @@ body{
 
     position:relative;
 
-    min-height:950px;
+    min-height:1100px;
 
     overflow:hidden;
 
@@ -991,7 +1014,7 @@ body{
 
 
 /* =========================================================
-   MENSAJE FINAL
+   CONTENIDO FINAL
 ========================================================= */
 
 .reveal-content{
@@ -1000,10 +1023,10 @@ body{
 
     z-index:10;
 
-    min-height:950px;
+    min-height:1100px;
 
     padding:
-        80px 25px
+        90px 25px
         100px;
 
     display:flex;
@@ -1019,14 +1042,14 @@ body{
     transform:translateY(20px);
 
     transition:
-        opacity 1.4s ease,
-        transform 1.4s ease;
+        opacity 1.5s ease,
+        transform 1.5s ease;
 }
 
 
 /*
-   El contenido permanece invisible hasta
-   que las cortinas terminan los 6 segundos.
+   NO SE VE NADA DEL MENSAJE
+   hasta que las cortinas han terminado.
 */
 
 .reveal-content.show{
@@ -1037,48 +1060,58 @@ body{
 }
 
 
-/* título */
+/* =========================================================
+   LA FAMILIA CRECE
+========================================================= */
 
 .reveal-title{
 
-    margin:0 0 25px;
+    margin:
+        0 0
+        30px;
 
-    max-width:900px;
+    max-width:1000px;
 
     color:#765044;
 
     font-size:
         clamp(
-            38px,
-            6vw,
-            67px
+            52px,
+            8vw,
+            105px
         );
 
-    line-height:1.05;
+    line-height:.98;
 
     font-weight:400;
 
     font-style:italic;
+
+    text-align:center;
 }
 
 
-/* animalitos */
+/* =========================================================
+   ANIMAitos
+========================================================= */
 
 .animals{
 
-    width:250px;
+    width:280px;
 
-    max-width:65vw;
+    max-width:70vw;
 
     margin:
         5px 0
-        25px;
+        30px;
 
     object-fit:contain;
 }
 
 
-/* mensaje */
+/* =========================================================
+   MENSAJE
+========================================================= */
 
 .final-message{
 
@@ -1088,9 +1121,9 @@ body{
 
     font-size:
         clamp(
-            17px,
+            18px,
             2vw,
-            21px
+            22px
         );
 
     line-height:1.65;
@@ -1100,28 +1133,42 @@ body{
 
     margin:
         0 0
-        20px;
+        22px;
 }
+
+
+/* frase de Julio César */
+
+.final-message .secret{
+
+    font-size:21px;
+
+    font-weight:400;
+}
+
+
+/* anuncio */
 
 .final-message .announcement{
 
-    font-size:22px;
-
-    font-weight:bold;
-}
-
-.final-message .highlight{
-
-    font-size:24px;
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            34px
+        );
 
     font-weight:bold;
 
     margin:
-        25px 0;
+        25px 0
+        30px;
 }
 
 
-/* fotos */
+/* =========================================================
+   FOTOS MÁS GRANDES
+========================================================= */
 
 .photos{
 
@@ -1131,21 +1178,29 @@ body{
 
     align-items:flex-start;
 
-    gap:18px;
+    gap:25px;
 
-    margin-top:25px;
+    margin-top:35px;
 
     flex-wrap:wrap;
+
+    width:100%;
 }
+
+
+/*
+   Espacios de fotos más grandes
+*/
 
 .photo{
 
-    width:135px;
-    height:155px;
+    width:190px;
+
+    height:215px;
 
     padding:
-        7px 7px
-        24px;
+        10px 10px
+        32px;
 
     background:#fffaf4;
 
@@ -1154,20 +1209,26 @@ body{
         #d5b7a5;
 
     box-shadow:
-        0 8px 18px
-        rgba(100,70,55,.13);
+        0 10px 22px
+        rgba(100,70,55,.15);
 }
 
 .photo:nth-child(1){
-    transform:rotate(-5deg);
+
+    transform:
+        rotate(-5deg);
 }
 
 .photo:nth-child(2){
-    transform:rotate(4deg);
+
+    transform:
+        rotate(4deg);
 }
 
 .photo:nth-child(3){
-    transform:rotate(-3deg);
+
+    transform:
+        rotate(-3deg);
 }
 
 .photo img{
@@ -1196,8 +1257,9 @@ body{
 
 
 /*
-   Las cortinas cubren completamente el mensaje.
-   Cada una ocupa más de la mitad.
+   IMPORTANTE:
+   Las cortinas cubren completamente
+   el mensaje cuando están cerradas.
 */
 
 .curtain{
@@ -1217,7 +1279,7 @@ body{
         );
 
     /*
-       EXACTAMENTE 6 SEGUNDOS
+       6 SEGUNDOS EXACTOS
     */
 
     transition:
@@ -1238,7 +1300,8 @@ body{
 
     left:0;
 
-    transform:translateX(0);
+    transform:
+        translateX(0);
 }
 
 
@@ -1331,31 +1394,33 @@ body{
 
     .envelope-area{
 
-        height:330px;
+        height:340px;
     }
 
     .reveal{
 
-        min-height:900px;
+        min-height:1100px;
     }
 
     .reveal-content{
 
-        min-height:900px;
+        min-height:1100px;
 
         padding:
-            65px 20px
+            70px 20px
             90px;
+    }
+
+    .reveal-title{
+
+        font-size:58px;
+
+        margin-bottom:25px;
     }
 
     .animals{
 
-        width:220px;
-    }
-
-    .curtain{
-
-        width:72vw;
+        width:230px;
     }
 
     .final-message{
@@ -1365,14 +1430,35 @@ body{
 
     .final-message .announcement{
 
-        font-size:20px;
+        font-size:25px;
+    }
+
+    .photos{
+
+        gap:15px;
+    }
+
+    .photo{
+
+        width:145px;
+
+        height:170px;
+
+        padding:
+            8px 8px
+            25px;
+    }
+
+    .curtain{
+
+        width:72vw;
     }
 
 }
 
 
 /* =========================================================
-   MÓVILES MUY PEQUEÑOS
+   MÓVILES PEQUEÑOS
 ========================================================= */
 
 @media(max-width:420px){
@@ -1399,26 +1485,31 @@ body{
     .envelope-left{
 
         border-left-width:142px;
+
         border-top-width:95px;
+
         border-bottom-width:95px;
     }
 
     .envelope-right{
 
         border-right-width:142px;
+
         border-top-width:95px;
+
         border-bottom-width:95px;
     }
 
-    .photos{
+    .reveal-title{
 
-        gap:10px;
+        font-size:50px;
     }
 
     .photo{
 
-        width:100px;
-        height:120px;
+        width:125px;
+
+        height:150px;
     }
 
 }
@@ -1448,6 +1539,9 @@ body{
     <div class="sky-heart">♡</div>
     <div class="sky-heart">♥</div>
     <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
+    <div class="sky-heart">♡</div>
+    <div class="sky-heart">♥</div>
 
 
     <!-- estrellas -->
@@ -1458,7 +1552,7 @@ body{
     <div class="star s4">✦</div>
 
 
-    <!-- nubes -->
+    <!-- nube izquierda -->
 
     <div class="cloud cloud-left">
 
@@ -1468,6 +1562,8 @@ body{
 
     </div>
 
+
+    <!-- nube derecha -->
 
     <div class="cloud cloud-right">
 
@@ -1481,11 +1577,6 @@ body{
     <!-- contenido -->
 
     <div class="cover-content">
-
-
-        <div class="cover-eyebrow">
-            CON TODO NUESTRO AMOR
-        </div>
 
 
         <h1 class="cover-title">
@@ -1548,10 +1639,10 @@ body{
     </p>
 
 
+    <!-- SOBRE -->
+
     <div class="envelope-area">
 
-
-        <!-- corazones alrededor -->
 
         <div class="envelope-hearts">
 
@@ -1563,16 +1654,18 @@ body{
             <span class="h5">♥</span>
             <span class="h6">♡</span>
 
+            <span class="h7">♡</span>
+            <span class="h8">♥</span>
+
         </div>
 
-
-        <!-- sobre -->
 
         <div
             class="envelope"
             id="envelope"
             onclick="openEnvelope()"
         >
+
 
             <div class="envelope-back"></div>
 
@@ -1594,6 +1687,7 @@ body{
                 ALGO MUY ESPECIAL
             </div>
 
+
         </div>
 
 
@@ -1613,11 +1707,14 @@ body{
      REVELACIÓN
 ======================================================= -->
 
-<section class="reveal" id="reveal">
+<section
+    class="reveal"
+    id="reveal"
+>
 
 
     <!-- ===================================================
-         MENSAJE
+         CONTENIDO
     ==================================================== -->
 
     <div
@@ -1626,40 +1723,35 @@ body{
     >
 
 
+        <!-- TÍTULO GRANDE -->
+
         <h2 class="reveal-title">
-
-            👶🏽✨
-            <br>
-
             ¡La familia crece!
-            
-            ✨👶🏽
-
         </h2>
 
 
-        <!-- animalitos -->
+        <!-- IMAGEN -->
 
         <img
-            src="animalitos.png"
+            src="animaitos.png"
             class="animals"
-            alt="Elefantito y jirafa"
+            alt="animaitos.png"
         >
 
+
+        <!-- MENSAJE -->
 
         <div class="final-message">
 
 
-            <p>
-                <strong>
-                    Julio César y yo tenemos un pequeño secreto
-                    que ya no podemos guardar… 💕
-                </strong>
+            <p class="secret">
+                Julio César y yo tenemos un pequeño secreto
+                que ya no podemos guardar…
             </p>
 
 
-            <p class="highlight">
-                ¡Estamos esperando un bebé! 🍼🥰
+            <p class="announcement">
+                ¡Estamos esperando un bebé!
             </p>
 
 
@@ -1673,48 +1765,60 @@ body{
 
             <p>
                 Prepárense para muchos abrazos,
-                sonrisas y una nueva razón para celebrar. ❤️
+                sonrisas y una nueva razón para celebrar.
             </p>
 
 
             <p>
-                ¡Sí, van a ser tías-abuelas, tí@s,
-                prim@s! 👶🏽🎉
+                ¡Sí, van a ser tías-abuelas,
+                tí@s, prim@s!
             </p>
 
 
-            <p class="highlight">
-                Hagan campo para un@ más 🥰
+            <p class="announcement">
+                Hagan campo para un@ más.
             </p>
 
 
         </div>
 
 
-        <!-- fotos -->
+        <!-- =================================================
+             FOTOS
+        ================================================== -->
 
         <div class="photos">
 
+
             <div class="photo">
+
                 <img
                     src="foto1.jpeg"
                     alt="Foto 1"
                 >
+
             </div>
 
+
             <div class="photo">
+
                 <img
                     src="foto2.jpeg"
                     alt="Foto 2"
                 >
+
             </div>
 
+
             <div class="photo">
+
                 <img
                     src="foto3.jpeg"
                     alt="Foto 3"
                 >
+
             </div>
+
 
         </div>
 
@@ -1741,8 +1845,6 @@ body{
             >
 
 
-                <!-- cuerpo -->
-
                 <path
                     d="
                     M0 0
@@ -1759,8 +1861,6 @@ body{
                 />
 
 
-                <!-- luz -->
-
                 <path
                     d="
                     M35 0
@@ -1774,8 +1874,6 @@ body{
                     opacity=".55"
                 />
 
-
-                <!-- pliegue -->
 
                 <path
                     d="
@@ -1792,8 +1890,6 @@ body{
                 />
 
 
-                <!-- pliegue claro -->
-
                 <path
                     d="
                     M235 0
@@ -1808,8 +1904,6 @@ body{
                     opacity=".8"
                 />
 
-
-                <!-- pliegue oscuro -->
 
                 <path
                     d="
@@ -1826,8 +1920,6 @@ body{
                 />
 
 
-                <!-- pliegue final -->
-
                 <path
                     d="
                     M420 0
@@ -1842,8 +1934,6 @@ body{
                     opacity=".72"
                 />
 
-
-                <!-- borde -->
 
                 <path
                     d="
@@ -1868,6 +1958,7 @@ body{
                     fill="#a56f60"
                 />
 
+
                 <ellipse
                     cx="185"
                     cy="690"
@@ -1875,6 +1966,7 @@ body{
                     ry="28"
                     fill="#c58e7c"
                 />
+
 
                 <path
                     d="
@@ -1992,7 +2084,7 @@ body{
                     Z
                     "
                     fill="#d09c8b"
-                    opacity=".72
+                    opacity=".72"
                 />
 
 
@@ -2017,6 +2109,7 @@ body{
                     fill="#a56f60"
                 />
 
+
                 <ellipse
                     cx="185"
                     cy="690"
@@ -2024,6 +2117,7 @@ body{
                     ry="28"
                     fill="#c58e7c"
                 />
+
 
                 <path
                     d="
@@ -2044,6 +2138,7 @@ body{
 
 
     </div>
+
 
 </section>
 
@@ -2072,6 +2167,7 @@ function goToLetter(){
 
 let envelopeOpened = false;
 
+
 function openEnvelope(){
 
     if(envelopeOpened){
@@ -2084,8 +2180,10 @@ function openEnvelope(){
     const envelope =
         document.getElementById("envelope");
 
+
     const reveal =
         document.getElementById("reveal");
+
 
     const revealContent =
         document.getElementById("revealContent");
@@ -2096,14 +2194,14 @@ function openEnvelope(){
     envelope.classList.add("open");
 
 
-    /* lanzar corazones */
+    /* lanzar muchos corazones */
 
     createHearts();
 
 
     /*
-       Dejamos que se vea la apertura
-       del sobre antes de pasar a las cortinas.
+       Esperamos a que el sobre
+       termine de abrirse.
     */
 
     setTimeout(() => {
@@ -2116,30 +2214,20 @@ function openEnvelope(){
 
 
     /*
-       Esperamos a que la página llegue
-       a la sección de revelación.
+       Después empezamos las cortinas.
     */
 
     setTimeout(() => {
 
 
-        /*
-           EMPIEZAN A ABRIRSE LAS CORTINAS.
-
-           La animación CSS dura EXACTAMENTE
-           6 segundos.
-        */
-
         reveal.classList.add("open");
 
 
         /*
-           MUY IMPORTANTE:
+           LAS CORTINAS TARDAN 6 SEGUNDOS.
 
-           El mensaje NO aparece mientras
-           las cortinas están abriéndose.
-
-           Esperamos los 6000ms completos.
+           El mensaje permanece invisible
+           durante todo ese tiempo.
         */
 
         setTimeout(() => {
@@ -2155,7 +2243,7 @@ function openEnvelope(){
 
 
 /* =========================================================
-   CORAZONES DEL SOBRE
+   MUCHOS CORAZONES
 ========================================================= */
 
 function createHearts(){
@@ -2173,18 +2261,22 @@ function createHearts(){
         "#b98273",
         "#c58f7c",
         "#d3a18e",
+        "#dcb09e",
         "#e0bbaa",
-        "#edd4c8",
-        "#a87361"
+        "#ead0c4",
+        "#efdcd3",
+        "#a87361",
+        "#c18b77"
 
     ];
 
 
     /*
-       MUCHOS CORAZONES
+       AHORA SALEN MUCHOS MÁS:
+       120 corazones.
     */
 
-    for(let i=0;i<65;i++){
+    for(let i=0;i<120;i++){
 
 
         const heart =
@@ -2196,7 +2288,7 @@ function createHearts(){
 
 
         heart.textContent =
-            Math.random() > .3
+            Math.random() > .28
             ? "♥"
             : "♡";
 
@@ -2211,67 +2303,98 @@ function createHearts(){
 
 
         /*
-           Posición inicial
+           Punto de salida
+           desde diferentes zonas
+           del sobre.
         */
 
         heart.style.left =
             (
                 rect.left +
                 rect.width / 2 +
-                (Math.random()-.5)*80
+                (Math.random()-.5)*110
             ) + "px";
 
 
         heart.style.top =
             (
                 rect.top +
-                rect.height*.35
+                rect.height*.30 +
+                (Math.random()-.5)*35
             ) + "px";
 
 
         /*
-           Dirección
+           Movimiento horizontal
         */
 
         heart.style.setProperty(
             "--x",
             (
-                (Math.random()-.5)*460
+                (Math.random()-.5)*600
             ) + "px"
         );
 
+
+        /*
+           Movimiento hacia arriba
+        */
 
         heart.style.setProperty(
             "--y",
             (
-                -150 -
-                Math.random()*450
+                -120 -
+                Math.random()*600
             ) + "px"
         );
 
 
+        /*
+           Tamaño aleatorio
+        */
+
         heart.style.setProperty(
             "--scale",
             (
-                .55 +
-                Math.random()*1.25
+                .45 +
+                Math.random()*1.35
             )
         );
 
 
+        /*
+           Rotación
+        */
+
         heart.style.setProperty(
             "--rotation",
             (
-                -180 +
-                Math.random()*360
+                -220 +
+                Math.random()*440
             ) + "deg"
         );
 
 
+        /*
+           Duración variada
+        */
+
         heart.style.animationDuration =
             (
                 1.8 +
-                Math.random()*1.8
+                Math.random()*2.6
+            ) + "s";
+
+
+        /*
+           Pequeño retraso aleatorio
+           para que no salgan todos
+           exactamente al mismo tiempo.
+        */
+
+        heart.style.animationDelay =
+            (
+                Math.random()*.9
             ) + "s";
 
 
@@ -2284,7 +2407,7 @@ function createHearts(){
 
             heart.remove();
 
-        },5000);
+        },6500);
 
     }
 
