@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -938,7 +939,7 @@ body{
 
 
 /* =========================================================
-   CORAZONES QUE SALEN DEL SOBRE
+   CORAZONES QUE SALEN DEL SOBRE — NATURALES
 ========================================================= */
 
 .flying-heart{
@@ -955,39 +956,98 @@ body{
 
     animation:
         heartFly
-        2.7s
-        ease-out
+        var(--duration)
+        cubic-bezier(.22,.61,.36,1)
         forwards;
+
+    will-change:
+        transform,
+        opacity;
 }
+
 
 @keyframes heartFly{
 
     0%{
 
         transform:
-            translate(0,0)
-            scale(.2)
-            rotate(0);
+            translate3d(0,0,0)
+            scale(.15)
+            rotate(0deg);
 
         opacity:0;
     }
 
-    10%{
-        opacity:1;
+    8%{
+
+        opacity:.95;
+
+        transform:
+            translate3d(
+                calc(var(--x) * .08),
+                calc(var(--y) * .08),
+                0
+            )
+            scale(.55)
+            rotate(var(--rotation-start));
+    }
+
+    28%{
+
+        opacity:.95;
+
+        transform:
+            translate3d(
+                calc(var(--x) * .30),
+                calc(var(--y) * .30),
+                0
+            )
+            scale(var(--scale))
+            rotate(var(--rotation-mid));
+    }
+
+    55%{
+
+        opacity:.8;
+
+        transform:
+            translate3d(
+                calc(var(--x) * .58),
+                calc(var(--y) * .58),
+                0
+            )
+            scale(var(--scale))
+            rotate(var(--rotation-mid));
+    }
+
+    78%{
+
+        opacity:.45;
+
+        transform:
+            translate3d(
+                calc(var(--x) * .82),
+                calc(var(--y) * .82),
+                0
+            )
+            scale(calc(var(--scale) * .9))
+            rotate(var(--rotation-end));
     }
 
     100%{
 
-        transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            scale(var(--scale))
-            rotate(var(--rotation));
-
         opacity:0;
+
+        transform:
+            translate3d(
+                var(--x),
+                var(--y),
+                0
+            )
+            scale(calc(var(--scale) * .72))
+            rotate(var(--rotation-end));
     }
+
 }
 
 
@@ -1092,7 +1152,7 @@ body{
 
 
 /* =========================================================
-   ANIMAitos
+   ANIMALITOS
 ========================================================= */
 
 .animals{
@@ -1257,7 +1317,6 @@ body{
 
 
 /*
-   IMPORTANTE:
    Las cortinas cubren completamente
    el mensaje cuando están cerradas.
 */
@@ -1479,6 +1538,7 @@ body{
     .envelope{
 
         width:285px;
+
         height:190px;
     }
 
@@ -1733,9 +1793,9 @@ body{
         <!-- IMAGEN -->
 
         <img
-            src="animaitos.png"
+            src="Animalitos.png"
             class="animals"
-            alt="animaitos.png"
+            alt="Animalitos"
         >
 
 
@@ -1899,521 +1959,4 @@ body{
                     C225 750 255 600 265 465
                     C278 295 268 140 270 0
                     Z
-                    "
-                    fill="#d09a89"
-                    opacity=".8"
-                />
-
-
-                <path
-                    d="
-                    M325 0
-                    C340 165 335 330 315 470
-                    C292 640 260 785 220 865
-                    L270 825
-                    C320 675 345 515 355 375
-                    C365 230 355 100 360 0
-                    Z
-                    "
-                    fill="#916154"
-                    opacity=".7"
-                />
-
-
-                <path
-                    d="
-                    M420 0
-                    C440 160 430 300 405 430
-                    C375 585 335 710 300 800
-                    L355 745
-                    C405 615 445 470 460 330
-                    C475 195 465 90 470 0
-                    Z
-                    "
-                    fill="#d09c8b"
-                    opacity=".72"
-                />
-
-
-                <path
-                    d="
-                    M560 130
-                    C525 300 460 470 390 610
-                    C320 750 230 900 155 965
-                    "
-                    fill="none"
-                    stroke="#805348"
-                    stroke-width="13"
-                    opacity=".45"
-                />
-
-
-                <!-- recogido -->
-
-                <ellipse
-                    cx="185"
-                    cy="700"
-                    rx="90"
-                    ry="45"
-                    fill="#a56f60"
-                />
-
-
-                <ellipse
-                    cx="185"
-                    cy="690"
-                    rx="80"
-                    ry="28"
-                    fill="#c58e7c"
-                />
-
-
-                <path
-                    d="
-                    M110 685
-                    C140 700 165 705 185 700
-                    C210 695 235 685 260 670
-                    "
-                    fill="none"
-                    stroke="#efd0c1"
-                    stroke-width="8"
-                    opacity=".55"
-                />
-
-
-            </svg>
-
-        </div>
-
-
-
-        <!-- CORTINA DERECHA -->
-
-        <div class="curtain curtain-right">
-
-            <svg
-                viewBox="0 0 600 1000"
-                preserveAspectRatio="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-
-
-                <path
-                    d="
-                    M0 0
-                    H600
-                    V145
-                    C575 205 560 265 525 330
-                    C490 395 455 460 415 530
-                    C380 592 350 665 315 730
-                    C275 805 225 875 175 930
-                    C130 980 75 1000 0 1000
-                    Z
-                    "
-                    fill="#b98273"
-                />
-
-
-                <path
-                    d="
-                    M35 0
-                    H115
-                    C125 190 115 375 85 570
-                    C65 710 35 865 0 945
-                    V0
-                    Z
-                    "
-                    fill="#d4a393"
-                    opacity=".55"
-                />
-
-
-                <path
-                    d="
-                    M150 0
-                    C165 190 160 365 145 520
-                    C130 680 105 835 70 965
-                    L115 940
-                    C155 795 185 650 190 505
-                    C195 320 188 150 185 0
-                    Z
-                    "
-                    fill="#8f5f52"
-                    opacity=".75"
-                />
-
-
-                <path
-                    d="
-                    M235 0
-                    C250 180 245 350 225 500
-                    C205 650 175 805 140 920
-                    L185 895
-                    C225 750 255 600 265 465
-                    C278 295 268 140 270 0
-                    Z
-                    "
-                    fill="#d09a89"
-                    opacity=".8"
-                />
-
-
-                <path
-                    d="
-                    M325 0
-                    C340 165 335 330 315 470
-                    C292 640 260 785 220 865
-                    L270 825
-                    C320 675 345 515 355 375
-                    C365 230 355 100 360 0
-                    Z
-                    "
-                    fill="#916154"
-                    opacity=".7"
-                />
-
-
-                <path
-                    d="
-                    M420 0
-                    C440 160 430 300 405 430
-                    C375 585 335 710 300 800
-                    L355 745
-                    C405 615 445 470 460 330
-                    C475 195 465 90 470 0
-                    Z
-                    "
-                    fill="#d09c8b"
-                    opacity=".72"
-                />
-
-
-                <path
-                    d="
-                    M560 130
-                    C525 300 460 470 390 610
-                    C320 750 230 900 155 965
-                    "
-                    fill="none"
-                    stroke="#805348"
-                    stroke-width="13"
-                    opacity=".45"
-                />
-
-
-                <ellipse
-                    cx="185"
-                    cy="700"
-                    rx="90"
-                    ry="45"
-                    fill="#a56f60"
-                />
-
-
-                <ellipse
-                    cx="185"
-                    cy="690"
-                    rx="80"
-                    ry="28"
-                    fill="#c58e7c"
-                />
-
-
-                <path
-                    d="
-                    M110 685
-                    C140 700 165 705 185 700
-                    C210 695 235 685 260 670
-                    "
-                    fill="none"
-                    stroke="#efd0c1"
-                    stroke-width="8"
-                    opacity=".55"
-                />
-
-
-            </svg>
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<script>
-
-/* =========================================================
-   IR A LA CARTA
-========================================================= */
-
-function goToLetter(){
-
-    document
-        .getElementById("letter")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-}
-
-
-/* =========================================================
-   ABRIR SOBRE
-========================================================= */
-
-let envelopeOpened = false;
-
-
-function openEnvelope(){
-
-    if(envelopeOpened){
-        return;
-    }
-
-    envelopeOpened = true;
-
-
-    const envelope =
-        document.getElementById("envelope");
-
-
-    const reveal =
-        document.getElementById("reveal");
-
-
-    const revealContent =
-        document.getElementById("revealContent");
-
-
-    /* abrir sobre */
-
-    envelope.classList.add("open");
-
-
-    /* lanzar muchos corazones */
-
-    createHearts();
-
-
-    /*
-       Esperamos a que el sobre
-       termine de abrirse.
-    */
-
-    setTimeout(() => {
-
-        reveal.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },1200);
-
-
-    /*
-       Después empezamos las cortinas.
-    */
-
-    setTimeout(() => {
-
-
-        reveal.classList.add("open");
-
-
-        /*
-           LAS CORTINAS TARDAN 6 SEGUNDOS.
-
-           El mensaje permanece invisible
-           durante todo ese tiempo.
-        */
-
-        setTimeout(() => {
-
-            revealContent.classList.add("show");
-
-        },6000);
-
-
-    },2200);
-
-}
-
-
-/* =========================================================
-   MUCHOS CORAZONES
-========================================================= */
-
-function createHearts(){
-
-    const envelope =
-        document.getElementById("envelope");
-
-
-    const rect =
-        envelope.getBoundingClientRect();
-
-
-    const colors=[
-
-        "#b98273",
-        "#c58f7c",
-        "#d3a18e",
-        "#dcb09e",
-        "#e0bbaa",
-        "#ead0c4",
-        "#efdcd3",
-        "#a87361",
-        "#c18b77"
-
-    ];
-
-
-    /*
-       AHORA SALEN MUCHOS MÁS:
-       120 corazones.
-    */
-
-    for(let i=0;i<120;i++){
-
-
-        const heart =
-            document.createElement("div");
-
-
-        heart.className =
-            "flying-heart";
-
-
-        heart.textContent =
-            Math.random() > .28
-            ? "♥"
-            : "♡";
-
-
-        heart.style.color =
-            colors[
-                Math.floor(
-                    Math.random() *
-                    colors.length
-                )
-            ];
-
-
-        /*
-           Punto de salida
-           desde diferentes zonas
-           del sobre.
-        */
-
-        heart.style.left =
-            (
-                rect.left +
-                rect.width / 2 +
-                (Math.random()-.5)*110
-            ) + "px";
-
-
-        heart.style.top =
-            (
-                rect.top +
-                rect.height*.30 +
-                (Math.random()-.5)*35
-            ) + "px";
-
-
-        /*
-           Movimiento horizontal
-        */
-
-        heart.style.setProperty(
-            "--x",
-            (
-                (Math.random()-.5)*600
-            ) + "px"
-        );
-
-
-        /*
-           Movimiento hacia arriba
-        */
-
-        heart.style.setProperty(
-            "--y",
-            (
-                -120 -
-                Math.random()*600
-            ) + "px"
-        );
-
-
-        /*
-           Tamaño aleatorio
-        */
-
-        heart.style.setProperty(
-            "--scale",
-            (
-                .45 +
-                Math.random()*1.35
-            )
-        );
-
-
-        /*
-           Rotación
-        */
-
-        heart.style.setProperty(
-            "--rotation",
-            (
-                -220 +
-                Math.random()*440
-            ) + "deg"
-        );
-
-
-        /*
-           Duración variada
-        */
-
-        heart.style.animationDuration =
-            (
-                1.8 +
-                Math.random()*2.6
-            ) + "s";
-
-
-        /*
-           Pequeño retraso aleatorio
-           para que no salgan todos
-           exactamente al mismo tiempo.
-        */
-
-        heart.style.animationDelay =
-            (
-                Math.random()*.9
-            ) + "s";
-
-
-        document.body.appendChild(
-            heart
-        );
-
-
-        setTimeout(() => {
-
-            heart.remove();
-
-        },6500);
-
-    }
-
-}
-
-</script>
-
-</body>
-</html>
+```
