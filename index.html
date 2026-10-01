@@ -1,1510 +1,1458 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-    <title>Una sorpresa con amor</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, "Times New Roman", serif;
-            background: #f9f3ef;
-            color: #59443d;
-            overflow-x: hidden;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        /* =========================
-           PORTADA
-        ========================= */
-
-        .cover {
-            min-height: 100vh;
-            min-height: 100svh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px 20px;
-            background:
-                radial-gradient(
-                    circle at 50% 35%,
-                    #fffdfb 0%,
-                    #f9f1ec 55%,
-                    #eadbd3 100%
-                );
-        }
-
-        .cover-content {
-            width: min(760px, 100%);
-            animation: fadeIn 1.4s ease forwards;
-        }
-
-        .small-title {
-            font-size: 15px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: #9b7164;
-            margin-bottom: 25px;
-        }
-
-        .cover h1 {
-            font-size: clamp(42px, 8vw, 82px);
-            font-weight: normal;
-            line-height: 1.05;
-            color: #76554a;
-            margin-bottom: 25px;
-        }
-
-        .cover-heart {
-            font-size: 58px;
-            color: #b77f6b;
-            margin: 10px 0 25px;
-            animation: heartbeat 2.2s ease-in-out infinite;
-        }
-
-        .cover-text {
-            max-width: 570px;
-            margin: 0 auto 35px;
-            font-size: 18px;
-            line-height: 1.8;
-            color: #765e55;
-        }
-
-        .main-button {
-            border: 0;
-            background: #9c7062;
-            color: white;
-            padding: 17px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 13px;
-            letter-spacing: 2px;
-            transition:
-                transform .25s ease,
-                background .25s ease,
-                box-shadow .25s ease;
-            box-shadow: 0 10px 25px rgba(130, 88, 72, .18);
-        }
-
-        .main-button:hover {
-            background: #825b4f;
-            transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(130, 88, 72, .25);
-        }
-
-        .main-button:active {
-            transform: translateY(0);
-        }
-
-        /* =========================
-           CARTA
-        ========================= */
-
-        .letter-section {
-            min-height: 100vh;
-            min-height: 100svh;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 70px 20px;
-            background: #fbf7f4;
-        }
-
-        .letter-section.active {
-            display: flex;
-            animation: sectionAppear .9s ease forwards;
-        }
-
-        .letter-content {
-            width: min(700px, 100%);
-        }
-
-        .letter-title {
-            font-size: clamp(28px, 5vw, 43px);
-            font-weight: normal;
-            color: #76554a;
-            margin-bottom: 12px;
-        }
-
-        .letter-subtitle {
-            font-size: 16px;
-            color: #98796d;
-            margin-bottom: 42px;
-        }
-
-        /* =========================
-           SOBRE
-        ========================= */
-
-        .envelope-wrapper {
-            width: min(390px, 90vw);
-            margin: 0 auto 35px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .envelope {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1.45 / 1;
-            background: #d8b4a5;
-            border-radius: 5px;
-            box-shadow: 0 18px 45px rgba(102, 69, 57, .18);
-            overflow: hidden;
-            transition: transform .35s ease;
-        }
-
-        .envelope-wrapper:hover .envelope {
-            transform: translateY(-5px);
-        }
-
-        .envelope-back {
-            position: absolute;
-            inset: 0;
-            background: #cda597;
-        }
-
-        .envelope-left {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 52%;
-            height: 100%;
-            background: #d9b7a9;
-            clip-path: polygon(0 0, 100% 100%, 0 100%);
-            z-index: 3;
-        }
-
-        .envelope-right {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 52%;
-            height: 100%;
-            background: #c9a093;
-            clip-path: polygon(100% 0, 100% 100%, 0 100%);
-            z-index: 3;
-        }
-
-        .envelope-bottom {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 100%;
-            background: #d4aea0;
-            clip-path: polygon(0 100%, 50% 45%, 100% 100%);
-            z-index: 4;
-        }
-
-        .envelope-flap {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 62%;
-            background: #dfbcad;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            transform-origin: top center;
-            z-index: 6;
-            transition:
-                transform 1s cubic-bezier(.2, .7, .2, 1),
-                z-index 0s linear 0s;
-        }
-
-        .envelope-letter {
-            position: absolute;
-            left: 8%;
-            width: 84%;
-            height: 72%;
-            bottom: 7%;
-            background: #fffaf7;
-            border-radius: 3px;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #a37a6c;
-            font-size: 19px;
-            transition:
-                transform 1s cubic-bezier(.2, .7, .2, 1),
-                z-index 0s linear 0s;
-        }
-
-        .envelope.open .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
-
-        .envelope.open .envelope-letter {
-            transform: translateY(-80px);
-            z-index: 7;
-        }
-
-        .open-text {
-            color: #8d685c;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* =========================
-           DECORACIÓN
-        ========================= */
-
-        .decor-heart {
-            position: absolute;
-            color: #d9b0a0;
-            opacity: .4;
-            pointer-events: none;
-            animation: softFloat 4s ease-in-out infinite;
-        }
-
-        .decor-heart.one {
-            left: 8%;
-            top: 20%;
-            font-size: 35px;
-        }
-
-        .decor-heart.two {
-            right: 10%;
-            top: 30%;
-            font-size: 25px;
-            animation-delay: 1s;
-        }
-
-        .decor-heart.three {
-            left: 15%;
-            bottom: 17%;
-            font-size: 20px;
-            animation-delay: 1.7s;
-        }
-
-        .decor-heart.four {
-            right: 15%;
-            bottom: 15%;
-            font-size: 42px;
-            animation-delay: .6s;
-        }
-
-        /* =========================
-           CORAZONES
-        ========================= */
-
-        .flying-heart {
-            position: fixed;
-            z-index: 500;
-            pointer-events: none;
-            color: #b77f6b;
-            font-size: 22px;
-            animation:
-                heartFly
-                var(--duration)
-                cubic-bezier(.22, .61, .36, 1)
-                forwards;
-            will-change:
-                transform,
-                opacity;
-            text-shadow: 0 2px 8px rgba(150, 91, 73, .08);
-        }
-
-        @keyframes heartFly {
-            0% {
-                transform:
-                    translate3d(0, 0, 0)
-                    scale(.15)
-                    rotate(0deg);
-                opacity: 0;
-            }
-
-            8% {
-                opacity: .95;
-                transform:
-                    translate3d(
-                        calc(var(--x) * .08),
-                        calc(var(--y) * .08),
-                        0
-                    )
-                    scale(.55)
-                    rotate(var(--rotation-start));
-            }
-
-            28% {
-                opacity: .95;
-                transform:
-                    translate3d(
-                        calc(var(--x) * .30),
-                        calc(var(--y) * .30),
-                        0
-                    )
-                    scale(var(--scale))
-                    rotate(var(--rotation-mid));
-            }
-
-            55% {
-                opacity: .8;
-                transform:
-                    translate3d(
-                        calc(var(--x) * .58),
-                        calc(var(--y) * .58),
-                        0
-                    )
-                    scale(var(--scale))
-                    rotate(var(--rotation-mid));
-            }
-
-            78% {
-                opacity: .45;
-                transform:
-                    translate3d(
-                        calc(var(--x) * .82),
-                        calc(var(--y) * .82),
-                        0
-                    )
-                    scale(calc(var(--scale) * .9))
-                    rotate(var(--rotation-end));
-            }
-
-            100% {
-                opacity: 0;
-                transform:
-                    translate3d(
-                        var(--x),
-                        var(--y),
-                        0
-                    )
-                    scale(calc(var(--scale) * .72))
-                    rotate(var(--rotation-end));
-            }
-        }
-
-        /* =========================
-           REVELACIÓN
-        ========================= */
-
-        .reveal-section {
-            min-height: 100vh;
-            min-height: 100svh;
-            position: relative;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 70px 20px;
-            background:
-                radial-gradient(
-                    circle at center,
-                    #fffaf7 0%,
-                    #f6ebe5 60%,
-                    #ead9d1 100%
-                );
-            overflow: hidden;
-        }
-
-        .reveal-section.active {
-            display: flex;
-            animation: sectionAppear 1.2s ease forwards;
-        }
-
-        .reveal-inner {
-            width: min(900px, 100%);
-            position: relative;
-            z-index: 10;
-        }
-
-        .reveal-small {
-            color: #a07769;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-        }
-
-        .reveal-title {
-            font-size: clamp(42px, 8vw, 78px);
-            font-weight: normal;
-            color: #76554a;
-            line-height: 1;
-            margin-bottom: 25px;
-        }
-
-        .animals {
-            display: block;
-            width: min(500px, 90vw);
-            max-height: 360px;
-            object-fit: contain;
-            margin: 0 auto 30px;
-            animation: animalAppear 1.3s ease .2s both;
-        }
-
-        .reveal-message {
-            width: min(700px, 100%);
-            margin: 0 auto;
-        }
-
-        .reveal-message p {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            color: #715950;
-        }
-
-        .big-message {
-            font-size: clamp(28px, 5vw, 48px) !important;
-            color: #9c7062 !important;
-            margin: 25px 0 !important;
-            font-weight: normal;
-        }
-
-        .final-message {
-            margin-top: 25px;
-            font-size: 21px !important;
-            color: #8b665a !important;
-        }
-
-        /* =========================
-           FOTOS
-        ========================= */
-
-        .photos {
-            width: min(1050px, 100%);
-            margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .photo {
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 1 / 1;
-            background: #e7d8d0;
-            box-shadow: 0 12px 30px rgba(100, 65, 54, .12);
-        }
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform .5s ease;
-        }
-
-        .photo:hover img {
-            transform: scale(1.04);
-        }
-
-        .restart-button {
-            margin-top: 45px;
-            border: 1px solid #b58a7b;
-            color: #8e675a;
-            background: transparent;
-            padding: 13px 24px;
-            border-radius: 50px;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition:
-                background .25s ease,
-                color .25s ease,
-                transform .25s ease;
-        }
-
-        .restart-button:hover {
-            background: #9c7062;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           CORTINAS
-        ========================= */
-
-        .curtains {
-            position: fixed;
-            inset: 0;
-            z-index: 400;
-            pointer-events: none;
-            display: none;
-        }
-
-        .curtains.active {
-            display: block;
-        }
-
-        .curtain {
-            position: absolute;
-            top: 0;
-            width: 51%;
-            height: 100%;
-            background:
-                linear-gradient(
-                    90deg,
-                    #a66f5d 0%,
-                    #c58f7b 18%,
-                    #9e6959 35%,
-                    #c8937f 52%,
-                    #9b6556 70%,
-                    #bd8775 86%,
-                    #8d5c4e 100%
-                );
-            box-shadow: inset 0 0 70px rgba(50, 25, 20, .18);
-            transition:
-                transform 5.8s cubic-bezier(.65, 0, .25, 1);
-        }
-
-        .curtain.left {
-            left: 0;
-            transform: translateX(0);
-        }
-
-        .curtain.right {
-            right: 0;
-            transform: translateX(0);
-        }
-
-        .curtains.open .curtain.left {
-            transform: translateX(-100%);
-        }
-
-        .curtains.open .curtain.right {
-            transform: translateX(100%);
-        }
-
-        /* =========================
-           ANIMACIONES
-        ========================= */
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes sectionAppear {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes heartbeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.12);
-            }
-        }
-
-        @keyframes softFloat {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-5deg);
-            }
-
-            50% {
-                transform: translateY(-12px) rotate(5deg);
-            }
-        }
-
-        @keyframes animalAppear {
-            from {
-                opacity: 0;
-                transform: scale(.88) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* =========================
-           MÓVIL
-        ========================= */
-
-        @media (max-width: 700px) {
-            .cover {
-                padding: 25px 18px;
-            }
-
-            .small-title {
-                font-size: 12px;
-                letter-spacing: 3px;
-            }
-
-            .cover-text {
-                font-size: 16px;
-                line-height: 1.7;
-            }
-
-            .main-button {
-                padding: 15px 22px;
-                font-size: 11px;
-            }
-
-            .letter-section {
-                padding: 55px 18px;
-            }
-
-            .letter-subtitle {
-                margin-bottom: 30px;
-            }
-
-            .envelope-wrapper {
-                width: min(340px, 88vw);
-            }
-
-            .decor-heart {
-                display: none;
-            }
-
-            .reveal-section {
-                padding: 60px 18px;
-            }
-
-            .reveal-title {
-                font-size: clamp(38px, 13vw, 60px);
-            }
-
-            .animals {
-                width: min(380px, 90vw);
-                margin-bottom: 20px;
-            }
-
-            .reveal-message p {
-                font-size: 16px;
-                line-height: 1.7;
-            }
-
-            .big-message {
-                font-size: 30px !important;
-            }
-
-            .final-message {
-                font-size: 18px !important;
-            }
-
-            .photos {
-                grid-template-columns: 1fr;
-                width: min(400px, 90vw);
-                gap: 16px;
-                margin-top: 40px;
-            }
-
-            .photo {
-                aspect-ratio: 4 / 3;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .cover h1 {
-                font-size: 43px;
-            }
-
-            .cover-heart {
-                font-size: 48px;
-            }
-
-            .envelope-wrapper {
-                width: 92vw;
-            }
-
-            .open-text {
-                font-size: 11px;
-            }
-
-            .reveal-title {
-                font-size: 40px;
-            }
-        }
-
-        /* Reduce movimiento si el usuario lo solicita */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una sorpresa con amor</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #faf5f2;
+    color: #604940;
+    overflow-x: hidden;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+section {
+    width: 100%;
+}
+
+#cover {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdfc 0%,
+            #f8efeb 60%,
+            #eadbd3 100%
+        );
+}
+
+#letterSection,
+#revealSection {
+    display: none;
+}
+
+#letterSection.show,
+#revealSection.show {
+    display: flex;
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+.cover-content {
+    width: 100%;
+    max-width: 760px;
+}
+
+.small-title {
+    color: #9d7568;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.cover-title {
+    color: #76554a;
+    font-size: clamp(45px, 9vw, 85px);
+    font-weight: normal;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.cover-heart {
+    color: #b77f6b;
+    font-size: 60px;
+    margin: 20px 0;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.cover-text {
+    max-width: 600px;
+    margin: 0 auto 35px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #755d54;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.main-button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    background: #9d7061;
+    color: white;
+    padding: 17px 30px;
+    border-radius: 50px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(120, 80, 65, .18);
+    transition: .25s ease;
+}
+
+.main-button:hover {
+    background: #825b4f;
+    transform: translateY(-3px);
+}
+
+.main-button:active {
+    transform: scale(.98);
+}
+
+.main-button:disabled {
+    opacity: .7;
+    cursor: default;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+#letterSection {
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    background: #fbf7f4;
+}
+
+.letter-content {
+    width: 100%;
+    max-width: 700px;
+}
+
+.letter-title {
+    color: #76554a;
+    font-size: clamp(30px, 6vw, 45px);
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.letter-subtitle {
+    color: #98786d;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+.envelope-wrapper {
+    width: min(390px, 90vw);
+    margin: 0 auto 35px;
+    cursor: pointer;
+}
+
+.envelope {
+    width: 100%;
+    aspect-ratio: 1.45;
+    position: relative;
+    background: #d4aa9b;
+    border-radius: 6px;
+    box-shadow:
+        0 18px 40px rgba(90, 55, 45, .18);
+    overflow: visible;
+}
+
+/* Parte trasera */
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #cda092;
+    border-radius: 6px;
+}
+
+/* Carta */
+
+.envelope-letter {
+    position: absolute;
+    left: 8%;
+    width: 84%;
+    height: 70%;
+    bottom: 8%;
+    background: #fffaf7;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a17668;
+    font-size: 18px;
+    z-index: 2;
+    transition: transform 1s ease;
+}
+
+/* Triángulo izquierdo */
+
+.envelope-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 52%;
+    height: 100%;
+    background: #d9b4a5;
+    clip-path: polygon(
+        0 0,
+        100% 100%,
+        0 100%
+    );
+    z-index: 4;
+}
+
+/* Triángulo derecho */
+
+.envelope-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 52%;
+    height: 100%;
+    background: #c79a8d;
+    clip-path: polygon(
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+    z-index: 4;
+}
+
+/* Parte inferior */
+
+.envelope-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #d1a89a;
+    clip-path: polygon(
+        0 100%,
+        50% 42%,
+        100% 100%
+    );
+    z-index: 5;
+}
+
+/* Solapa */
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 63%;
+    background: #dfb8a9;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+    transform-origin: top center;
+    z-index: 8;
+    transition: transform 1s ease;
+}
+
+/* SOBRE ABIERTO */
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .envelope-letter {
+    transform: translateY(-90px);
+    z-index: 9;
+}
+
+/* =========================
+   CORAZONES DECORATIVOS
+========================= */
+
+.decor-heart {
+    position: absolute;
+    color: #d7aa9b;
+    opacity: .45;
+    pointer-events: none;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.decor-heart.one {
+    left: 8%;
+    top: 20%;
+    font-size: 32px;
+}
+
+.decor-heart.two {
+    right: 10%;
+    top: 28%;
+    font-size: 24px;
+    animation-delay: 1s;
+}
+
+.decor-heart.three {
+    left: 14%;
+    bottom: 18%;
+    font-size: 21px;
+    animation-delay: 1.5s;
+}
+
+.decor-heart.four {
+    right: 14%;
+    bottom: 15%;
+    font-size: 38px;
+    animation-delay: .7s;
+}
+
+/* =========================
+   CORAZONES VOLANDO
+========================= */
+
+.flying-heart {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 22px;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+}
+
+/* =========================
+   REVELACIÓN
+========================= */
+
+#revealSection {
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px;
+    background:
+        radial-gradient(
+            circle at center,
+            #fffaf7 0%,
+            #f7ece7 60%,
+            #eadbd3 100%
+        );
+}
+
+.reveal-inner {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.reveal-small {
+    color: #a0786a;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.reveal-title {
+    color: #76554a;
+    font-size: clamp(43px, 9vw, 78px);
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+/* =========================
+   ANIMALITOS
+========================= */
+
+.animals {
+    display: block;
+    width: min(500px, 90vw);
+    max-height: 370px;
+    object-fit: contain;
+    margin: 0 auto 30px;
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.reveal-message {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.reveal-message p {
+    color: #715950;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.big-message {
+    color: #9c7062 !important;
+    font-size: clamp(28px, 6vw, 48px) !important;
+    line-height: 1.2 !important;
+    margin: 25px 0 !important;
+}
+
+.final-message {
+    color: #8b665a !important;
+    font-size: 21px !important;
+    margin-top: 20px !important;
+}
+
+/* =========================
+   FOTOS
+========================= */
+
+.photos {
+    width: 100%;
+    max-width: 1000px;
+    margin: 55px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #e7d8d0;
+    box-shadow: 0 12px 30px rgba(90, 55, 45, .12);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================
+   BOTÓN FINAL
+========================= */
+
+.restart-button {
+    margin-top: 45px;
+    border: 1px solid #b58a7b;
+    background: transparent;
+    color: #8d675a;
+    padding: 13px 24px;
+    border-radius: 50px;
+    font-family: Georgia, "Times New Roman", serif;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.restart-button:hover {
+    background: #9d7061;
+    color: white;
+}
+
+/* =========================
+   CORTINAS
+========================= */
+
+#curtains {
+    position: fixed;
+    inset: 0;
+    z-index: 8000;
+    display: none;
+    pointer-events: none;
+}
+
+#curtains.active {
+    display: block;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background:
+        linear-gradient(
+            90deg,
+            #936252,
+            #c38c78,
+            #9a6656,
+            #c18a76,
+            #8f5e50
+        );
+    transition: transform 5s ease;
+}
+
+.curtain-left {
+    left: 0;
+}
+
+.curtain-right {
+    right: 0;
+}
+
+#curtains.open .curtain-left {
+    transform: translateX(-100%);
+}
+
+#curtains.open .curtain-right {
+    transform: translateX(100%);
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 700px) {
+
+    .cover-text {
+        font-size: 16px;
+    }
+
+    .main-button {
+        padding: 15px 22px;
+        font-size: 11px;
+    }
+
+    .decor-heart {
+        display: none;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .photo {
+        aspect-ratio: 4 / 3;
+    }
+
+    .reveal-message p {
+        font-size: 16px;
+    }
+
+    .big-message {
+        font-size: 30px !important;
+    }
+
+    .final-message {
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .cover-title {
+        font-size: 43px;
+    }
+
+    .cover-heart {
+        font-size: 48px;
+    }
+
+    .envelope-wrapper {
+        width: 92vw;
+    }
+
+    .reveal-title {
+        font-size: 40px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         PORTADA
-    ========================= -->
+<!-- ==========================================
+     PORTADA
+========================================== -->
 
-    <section class="cover" id="cover">
-        <div class="cover-content">
+<section id="cover">
 
-            <div class="small-title">
-                Una pequeña sorpresa
-            </div>
+    <div class="cover-content">
 
-            <h1>
-                Aquí hay algo
-            </h1>
-
-            <div class="cover-heart">
-                ♥
-            </div>
-
-            <p class="cover-text">
-                Con muchísimo amor hemos preparado
-                una sorpresa muy especial para ustedes.
-                Hay noticias que merecen ser contadas
-                de una manera inolvidable.
-            </p>
-
-            <button
-                type="button"
-                class="main-button"
-                id="startButton"
-            >
-                TENGO ALGO PARA USTEDES…
-            </button>
-
-        </div>
-    </section>
-
-
-    <!-- =========================
-         CARTA / SOBRE
-    ========================= -->
-
-    <section
-        class="letter-section"
-        id="letterSection"
-    >
-
-        <span class="decor-heart one">♥</span>
-        <span class="decor-heart two">♡</span>
-        <span class="decor-heart three">♥</span>
-        <span class="decor-heart four">♡</span>
-
-        <div class="letter-content">
-
-            <h2 class="letter-title">
-                Antes de continuar…
-            </h2>
-
-            <p class="letter-subtitle">
-                Abran el sobre para descubrir nuestro secreto.
-            </p>
-
-            <div
-                class="envelope-wrapper"
-                id="envelopeWrapper"
-                aria-label="Abrir sobre"
-            >
-                <div
-                    class="envelope"
-                    id="envelope"
-                >
-
-                    <div class="envelope-back"></div>
-
-                    <div class="envelope-letter">
-                        Con amor, para ustedes ♥
-                    </div>
-
-                    <div class="envelope-left"></div>
-                    <div class="envelope-right"></div>
-                    <div class="envelope-bottom"></div>
-
-                    <div class="envelope-flap"></div>
-
-                </div>
-            </div>
-
-            <button
-                type="button"
-                class="main-button"
-                id="openButton"
-            >
-                ABRIR EL SOBRE
-            </button>
-
+        <div class="small-title">
+            Una pequeña sorpresa
         </div>
 
-    </section>
+        <h1 class="cover-title">
+            Aquí hay algo
+        </h1>
 
-
-    <!-- =========================
-         REVELACIÓN
-    ========================= -->
-
-    <section
-        class="reveal-section"
-        id="revealSection"
-    >
-
-        <div class="reveal-inner">
-
-            <div class="reveal-small">
-                Tenemos algo que contarles
-            </div>
-
-            <h2 class="reveal-title">
-                ¡La familia crece!
-            </h2>
-
-            <img
-                src="Animalitos.png"
-                class="animals"
-                alt="Animalitos"
-            >
-
-            <div class="reveal-message">
-
-                <p>
-                    Julio César y yo tenemos un pequeño
-                    secreto que ya no podemos guardar…
-                </p>
-
-                <p class="big-message">
-                    ¡Estamos esperando un bebé!
-                </p>
-
-                <p>
-                    Nuestros corazones están llenos de amor,
-                    ilusión y felicidad al saber que pronto
-                    llegará una personita que cambiará
-                    nuestras vidas para siempre.
-                </p>
-
-                <p>
-                    Prepárense para muchos abrazos,
-                    sonrisas y una nueva razón para celebrar.
-                </p>
-
-                <p class="final-message">
-                    ¡Sí, van a ser tías-abuelas,
-                    tí@s, prim@s!
-                </p>
-
-                <p class="final-message">
-                    Hagan campo para un@ más. ♥
-                </p>
-
-            </div>
-
-
-            <!-- =========================
-                 FOTOS
-            ========================= -->
-
-            <div class="photos">
-
-                <div class="photo">
-                    <img
-                        src="foto1.jpeg"
-                        alt="Foto 1"
-                    >
-                </div>
-
-                <div class="photo">
-                    <img
-                        src="foto2.jpeg"
-                        alt="Foto 2"
-                    >
-                </div>
-
-                <div class="photo">
-                    <img
-                        src="foto3.jpeg"
-                        alt="Foto 3"
-                    >
-                </div>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="restart-button"
-                id="restartButton"
-            >
-                VOLVER A VERLO
-            </button>
-
+        <div class="cover-heart">
+            ♥
         </div>
 
-    </section>
+        <p class="cover-text">
+            Con muchísimo amor hemos preparado
+            una sorpresa muy especial para ustedes.
+            Hay noticias que merecen ser contadas
+            de una manera inolvidable.
+        </p>
 
+        <button
+            type="button"
+            class="main-button"
+            id="startButton"
+        >
+            TENGO ALGO PARA USTEDES…
+        </button>
 
-    <!-- =========================
-         CORTINAS
-    ========================= -->
-
-    <div
-        class="curtains"
-        id="curtains"
-        aria-hidden="true"
-    >
-        <div class="curtain left"></div>
-        <div class="curtain right"></div>
     </div>
 
-
-    <script>
-        /* ==================================================
-           ELEMENTOS
-        ================================================== */
-
-        const cover =
-            document.getElementById("cover");
-
-        const letterSection =
-            document.getElementById("letterSection");
-
-        const revealSection =
-            document.getElementById("revealSection");
-
-        const envelopeWrapper =
-            document.getElementById("envelopeWrapper");
-
-        const envelope =
-            document.getElementById("envelope");
-
-        const startButton =
-            document.getElementById("startButton");
-
-        const openButton =
-            document.getElementById("openButton");
-
-        const restartButton =
-            document.getElementById("restartButton");
-
-        const curtains =
-            document.getElementById("curtains");
+</section>
 
 
-        /* ==================================================
-           VARIABLES DE CONTROL
-        ================================================== */
+<!-- ==========================================
+     CARTA
+========================================== -->
 
-        let animationRunning = false;
+<section id="letterSection">
 
-        let heartTimers = [];
+    <span class="decor-heart one">♥</span>
+    <span class="decor-heart two">♡</span>
+    <span class="decor-heart three">♥</span>
+    <span class="decor-heart four">♡</span>
 
-        let revealTimer = null;
+    <div class="letter-content">
 
-        let curtainTimer = null;
+        <h2 class="letter-title">
+            Antes de continuar…
+        </h2>
+
+        <p class="letter-subtitle">
+            Abran el sobre para descubrir nuestro secreto.
+        </p>
+
+        <div
+            class="envelope-wrapper"
+            id="envelopeWrapper"
+        >
+
+            <div
+                class="envelope"
+                id="envelope"
+            >
+
+                <div class="envelope-back"></div>
+
+                <div class="envelope-letter">
+                    Con amor, para ustedes ♥
+                </div>
+
+                <div class="envelope-left"></div>
+
+                <div class="envelope-right"></div>
+
+                <div class="envelope-bottom"></div>
+
+                <div class="envelope-flap"></div>
+
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="main-button"
+            id="openButton"
+        >
+            ABRIR EL SOBRE
+        </button>
+
+    </div>
+
+</section>
 
 
-        /* ==================================================
-           IR A LA CARTA
-        ================================================== */
+<!-- ==========================================
+     REVELACIÓN
+========================================== -->
 
-        function showLetter() {
+<section id="revealSection">
 
-            cover.style.display = "none";
+    <div class="reveal-inner">
 
-            revealSection.classList.remove("active");
+        <div class="reveal-small">
+            Tenemos algo que contarles
+        </div>
 
-            letterSection.classList.add("active");
+        <h2 class="reveal-title">
+            ¡La familia crece!
+        </h2>
 
-            envelope.classList.remove("open");
+        <!-- NOMBRE EXACTO DEL ARCHIVO -->
+        <img
+            src="Animalitos.png"
+            class="animals"
+            alt="Animalitos"
+        >
 
-            openButton.disabled = false;
+        <div class="reveal-message">
 
-            openButton.textContent =
-                "ABRIR EL SOBRE";
+            <p>
+                Julio César y yo tenemos un pequeño secreto
+                que ya no podemos guardar…
+            </p>
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            <p class="big-message">
+                ¡Estamos esperando un bebé!
+            </p>
+
+            <p>
+                Nuestros corazones están llenos de amor,
+                ilusión y felicidad al saber que pronto
+                llegará una personita que cambiará
+                nuestras vidas para siempre.
+            </p>
+
+            <p>
+                Prepárense para muchos abrazos,
+                sonrisas y una nueva razón para celebrar.
+            </p>
+
+            <p class="final-message">
+                ¡Sí, van a ser tías-abuelas,
+                tí@s, prim@s!
+            </p>
+
+            <p class="final-message">
+                Hagan campo para un@ más. ♥
+            </p>
+
+        </div>
+
+
+        <!-- FOTOS -->
+
+        <div class="photos">
+
+            <div class="photo">
+                <img
+                    src="foto1.jpeg"
+                    alt="Foto 1"
+                >
+            </div>
+
+            <div class="photo">
+                <img
+                    src="foto2.jpeg"
+                    alt="Foto 2"
+                >
+            </div>
+
+            <div class="photo">
+                <img
+                    src="foto3.jpeg"
+                    alt="Foto 3"
+                >
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="restart-button"
+            id="restartButton"
+        >
+            VOLVER A VERLO
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     CORTINAS
+========================================== -->
+
+<div id="curtains">
+
+    <div class="curtain curtain-left"></div>
+
+    <div class="curtain curtain-right"></div>
+
+</div>
+
+
+<script>
+
+/* =================================================
+   OBTENER ELEMENTOS
+================================================= */
+
+const cover =
+    document.getElementById("cover");
+
+const letterSection =
+    document.getElementById("letterSection");
+
+const revealSection =
+    document.getElementById("revealSection");
+
+const startButton =
+    document.getElementById("startButton");
+
+const openButton =
+    document.getElementById("openButton");
+
+const restartButton =
+    document.getElementById("restartButton");
+
+const envelope =
+    document.getElementById("envelope");
+
+const envelopeWrapper =
+    document.getElementById("envelopeWrapper");
+
+const curtains =
+    document.getElementById("curtains");
+
+
+/* =================================================
+   VARIABLES
+================================================= */
+
+let isOpening = false;
+
+let heartTimeouts = [];
+
+let heartAnimationFrames = [];
+
+
+/* =================================================
+   MOSTRAR CARTA
+================================================= */
+
+function showLetter() {
+
+    cover.style.display = "none";
+
+    letterSection.classList.add("show");
+
+    revealSection.classList.remove("show");
+
+    envelope.classList.remove("open");
+
+    openButton.disabled = false;
+
+    openButton.textContent =
+        "ABRIR EL SOBRE";
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =================================================
+   CREAR UN CORAZÓN
+================================================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "flying-heart";
+
+    heart.innerHTML =
+        Math.random() > 0.2
+            ? "♥"
+            : "♡";
+
+
+    /* Colores */
+
+    const colors = [
+        "#b98273",
+        "#c58f7c",
+        "#d3a18e",
+        "#dcb09e",
+        "#e0bbaa",
+        "#a87361",
+        "#c18b77"
+    ];
+
+    heart.style.color =
+        colors[
+            Math.floor(
+                Math.random() * colors.length
+            )
+        ];
+
+
+    /* Posición del sobre */
+
+    const rect =
+        envelope.getBoundingClientRect();
+
+    const startX =
+        rect.left +
+        rect.width / 2 +
+        (Math.random() - 0.5) * 70;
+
+    const startY =
+        rect.top +
+        rect.height * 0.4;
+
+
+    /* Movimiento */
+
+    let x = startX;
+
+    let y = startY;
+
+    const endX =
+        startX +
+        (Math.random() - 0.5) * 550;
+
+    const endY =
+        startY -
+        (180 + Math.random() * 450);
+
+
+    /* Curva lateral */
+
+    const curve =
+        (Math.random() - 0.5) * 180;
+
+
+    /* Tamaño */
+
+    const size =
+        14 + Math.random() * 22;
+
+    heart.style.fontSize =
+        size + "px";
+
+
+    /* Rotación */
+
+    const rotation =
+        (Math.random() - 0.5) * 500;
+
+
+    /* Duración */
+
+    const duration =
+        2200 + Math.random() * 2200;
+
+
+    document.body.appendChild(heart);
+
+
+    const startTime =
+        performance.now();
+
+
+    function animate(time) {
+
+        const elapsed =
+            time - startTime;
+
+        let progress =
+            elapsed / duration;
+
+
+        if (progress > 1) {
+            progress = 1;
         }
 
 
-        /* ==================================================
-           CORAZONES NATURALES
-        ================================================== */
+        /*
+           Movimiento suavizado.
+        */
 
-        function createHearts() {
-
-            const rect =
-                envelope.getBoundingClientRect();
-
-            const colors = [
-                "#b98273",
-                "#c58f7c",
-                "#d3a18e",
-                "#dcb09e",
-                "#e0bbaa",
-                "#ead0c4",
-                "#a87361",
-                "#c18b77"
-            ];
-
-            const totalHearts = 75;
-
-            for (
-                let i = 0;
-                i < totalHearts;
-                i++
-            ) {
-
-                const timer = setTimeout(() => {
-
-                    const heart =
-                        document.createElement("div");
-
-                    heart.className =
-                        "flying-heart";
-
-                    heart.textContent =
-                        Math.random() > .22
-                            ? "♥"
-                            : "♡";
-
-                    heart.style.color =
-                        colors[
-                            Math.floor(
-                                Math.random() *
-                                colors.length
-                            )
-                        ];
-
-                    const startX =
-                        rect.left +
-                        rect.width / 2 +
-                        (Math.random() - .5) * 85;
-
-                    const startY =
-                        rect.top +
-                        rect.height * .38 +
-                        (Math.random() - .5) * 30;
-
-                    heart.style.left =
-                        startX + "px";
-
-                    heart.style.top =
-                        startY + "px";
+        const smooth =
+            1 - Math.pow(1 - progress, 3);
 
 
-                    /*
-                       Dirección horizontal aleatoria.
-                       Algunos suben casi rectos y otros
-                       se van hacia los lados.
-                    */
+        /*
+           Curva natural.
+        */
 
-                    const direction =
-                        Math.random() > .5
-                            ? 1
-                            : -1;
-
-                    const horizontal =
-                        direction *
-                        (
-                            70 +
-                            Math.random() * 330
-                        );
-
-                    heart.style.setProperty(
-                        "--x",
-                        horizontal + "px"
-                    );
+        const curveMove =
+            Math.sin(progress * Math.PI) *
+            curve;
 
 
-                    /*
-                       Todos suben, pero cada uno
-                       a una distancia diferente.
-                    */
+        x =
+            startX +
+            (endX - startX) * smooth +
+            curveMove;
 
-                    const vertical =
-                        -150 -
-                        Math.random() * 480;
-
-                    heart.style.setProperty(
-                        "--y",
-                        vertical + "px"
-                    );
+        y =
+            startY +
+            (endY - startY) * smooth;
 
 
-                    /*
-                       Tamaños variados.
-                    */
-
-                    const scale =
-                        .45 +
-                        Math.random() * 1.05;
-
-                    heart.style.setProperty(
-                        "--scale",
-                        scale
-                    );
+        heart.style.transform =
+            "translate3d(" +
+            x +
+            "px, " +
+            y +
+            "px, 0) " +
+            "rotate(" +
+            rotation * smooth +
+            "deg)";
 
 
-                    /*
-                       Rotación diferente para
-                       cada corazón.
-                    */
+        /*
+           Aparecen poco a poco.
+        */
 
-                    const rotationStart =
-                        -15 +
-                        Math.random() * 30;
+        if (progress < 0.1) {
 
-                    const rotationMid =
-                        -90 +
-                        Math.random() * 180;
+            heart.style.opacity =
+                progress / 0.1;
 
-                    const rotationEnd =
-                        -180 +
-                        Math.random() * 360;
+        } else if (progress > 0.7) {
 
-                    heart.style.setProperty(
-                        "--rotation-start",
-                        rotationStart + "deg"
-                    );
+            heart.style.opacity =
+                1 -
+                ((progress - 0.7) / 0.3);
 
-                    heart.style.setProperty(
-                        "--rotation-mid",
-                        rotationMid + "deg"
-                    );
+        } else {
 
-                    heart.style.setProperty(
-                        "--rotation-end",
-                        rotationEnd + "deg"
-                    );
+            heart.style.opacity = "1";
 
-
-                    /*
-                       Duración diferente.
-                    */
-
-                    const duration =
-                        2.8 +
-                        Math.random() * 2.5;
-
-                    heart.style.setProperty(
-                        "--duration",
-                        duration + "s"
-                    );
-
-
-                    /*
-                       Pequeña variación vertical
-                       para evitar que todos aparezcan
-                       exactamente en el mismo punto.
-                    */
-
-                    heart.style.marginTop =
-                        (
-                            (Math.random() - .5) * 8
-                        ) + "px";
-
-
-                    document.body.appendChild(
-                        heart
-                    );
-
-
-                    /*
-                       Limpiar el corazón después
-                       de terminar la animación.
-                    */
-
-                    setTimeout(() => {
-
-                        if (heart.parentNode) {
-                            heart.remove();
-                        }
-
-                    }, (duration + .5) * 1000);
-
-                }, i * 55 + Math.random() * 120);
-
-
-                heartTimers.push(timer);
-            }
         }
 
 
-        /* ==================================================
-           LIMPIAR CORAZONES
-        ================================================== */
+        /*
+           Hacemos el corazón ligeramente
+           más grande al principio.
+        */
 
-        function clearHearts() {
+        const scale =
+            0.4 +
+            Math.sin(progress * Math.PI) *
+            0.7;
 
-            heartTimers.forEach(timer => {
-                clearTimeout(timer);
-            });
+        heart.style.transform +=
+            " scale(" +
+            scale +
+            ")";
 
-            heartTimers = [];
 
-            document
-                .querySelectorAll(".flying-heart")
-                .forEach(heart => {
-                    heart.remove();
-                });
+        if (progress < 1) {
+
+            const frame =
+                requestAnimationFrame(animate);
+
+            heartAnimationFrames.push(frame);
+
+        } else {
+
+            heart.remove();
+
         }
+    }
 
 
-        /* ==================================================
-           ABRIR EL SOBRE
-        ================================================== */
+    const frame =
+        requestAnimationFrame(animate);
 
-        function openEnvelope() {
-
-            if (animationRunning) {
-                return;
-            }
-
-            animationRunning = true;
-
-            openButton.disabled = true;
-
-            openButton.textContent =
-                "♥";
-
-            envelope.classList.add("open");
-
-            /*
-               Esperamos un poquito a que el sobre
-               empiece a abrirse antes de lanzar
-               los corazones.
-            */
-
-            setTimeout(() => {
-                createHearts();
-            }, 450);
+    heartAnimationFrames.push(frame);
+}
 
 
-            /*
-               Después mostramos la sección
-               de la sorpresa.
-            */
+/* =================================================
+   LANZAR MUCHOS CORAZONES
+================================================= */
 
-            revealTimer = setTimeout(() => {
+function createHearts() {
 
-                letterSection.classList.remove(
-                    "active"
-                );
+    clearHearts();
 
-                revealSection.classList.add(
-                    "active"
-                );
+    const total =
+        70;
 
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
+    for (
+        let i = 0;
+        i < total;
+        i++
+    ) {
 
-            }, 1300);
+        const timeout =
+            setTimeout(
+                function() {
 
+                    createHeart();
 
-            /*
-               Las cortinas aparecen por encima
-               de la pantalla.
-            */
-
-            curtainTimer = setTimeout(() => {
-
-                curtains.classList.add("active");
-
-                /*
-                   Pequeña pausa para que el navegador
-                   pinte las cortinas antes de abrirlas.
-                */
-
-                requestAnimationFrame(() => {
-
-                    requestAnimationFrame(() => {
-
-                        curtains.classList.add(
-                            "open"
-                        );
-
-                    });
-
-                });
-
-            }, 2100);
-
-
-            /*
-               Después de la animación de las cortinas,
-               las quitamos del DOM visual.
-            */
-
-            setTimeout(() => {
-
-                curtains.classList.remove("active");
-                curtains.classList.remove("open");
-
-                animationRunning = false;
-
-            }, 8500);
-        }
-
-
-        /* ==================================================
-           REINICIAR TODO
-        ================================================== */
-
-        function restartExperience() {
-
-            animationRunning = false;
-
-            /*
-               Cancelamos temporizadores anteriores.
-            */
-
-            if (revealTimer) {
-                clearTimeout(revealTimer);
-                revealTimer = null;
-            }
-
-            if (curtainTimer) {
-                clearTimeout(curtainTimer);
-                curtainTimer = null;
-            }
-
-            clearHearts();
-
-
-            /*
-               Cerramos cortinas.
-            */
-
-            curtains.classList.remove("open");
-            curtains.classList.remove("active");
-
-
-            /*
-               Ocultamos la revelación.
-            */
-
-            revealSection.classList.remove(
-                "active"
+                },
+                i * 55 +
+                Math.random() * 150
             );
 
+        heartTimeouts.push(timeout);
+    }
+}
 
-            /*
-               Volvemos a la portada.
-            */
+
+/* =================================================
+   LIMPIAR CORAZONES
+================================================= */
+
+function clearHearts() {
+
+    /* Cancelar timeouts */
+
+    heartTimeouts.forEach(
+        function(timeout) {
+
+            clearTimeout(timeout);
+
+        }
+    );
+
+    heartTimeouts = [];
+
+
+    /* Cancelar animaciones */
+
+    heartAnimationFrames.forEach(
+        function(frame) {
+
+            cancelAnimationFrame(frame);
+
+        }
+    );
+
+    heartAnimationFrames = [];
+
+
+    /* Eliminar corazones */
+
+    const hearts =
+        document.querySelectorAll(
+            ".flying-heart"
+        );
+
+    hearts.forEach(
+        function(heart) {
+
+            heart.remove();
+
+        }
+    );
+}
+
+
+/* =================================================
+   ABRIR SOBRE
+================================================= */
+
+function openEnvelope() {
+
+    if (isOpening) {
+        return;
+    }
+
+    isOpening = true;
+
+    openButton.disabled = true;
+
+    envelope.classList.add("open");
+
+
+    /*
+       Corazones después de que
+       el sobre empiece a abrirse.
+    */
+
+    setTimeout(
+        function() {
+
+            createHearts();
+
+        },
+        450
+    );
+
+
+    /*
+       Mostrar la revelación.
+    */
+
+    setTimeout(
+        function() {
 
             letterSection.classList.remove(
+                "show"
+            );
+
+            revealSection.classList.add(
+                "show"
+            );
+
+            window.scrollTo(0, 0);
+
+        },
+        1300
+    );
+
+
+    /*
+       Mostrar cortinas.
+    */
+
+    setTimeout(
+        function() {
+
+            curtains.classList.add(
                 "active"
             );
 
-            cover.style.display = "flex";
+            /*
+               Esperar un instante para que
+               el navegador pinte las cortinas.
+            */
 
-            envelope.classList.remove("open");
+            setTimeout(
+                function() {
 
-            openButton.disabled = false;
+                    curtains.classList.add(
+                        "open"
+                    );
 
-            openButton.textContent =
-                "ABRIR EL SOBRE";
+                },
+                100
+            );
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+        },
+        2000
+    );
+
+
+    /*
+       Quitar cortinas al terminar.
+    */
+
+    setTimeout(
+        function() {
+
+            curtains.classList.remove(
+                "active"
+            );
+
+            curtains.classList.remove(
+                "open"
+            );
+
+            isOpening = false;
+
+        },
+        7500
+    );
+}
+
+
+/* =================================================
+   REINICIAR
+================================================= */
+
+function restart() {
+
+    isOpening = false;
+
+    clearHearts();
+
+
+    /* Cerrar cortinas */
+
+    curtains.classList.remove(
+        "active"
+    );
+
+    curtains.classList.remove(
+        "open"
+    );
+
+
+    /* Ocultar revelación */
+
+    revealSection.classList.remove(
+        "show"
+    );
+
+
+    /* Ocultar carta */
+
+    letterSection.classList.remove(
+        "show"
+    );
+
+
+    /* Mostrar portada */
+
+    cover.style.display =
+        "flex";
+
+
+    /* Cerrar sobre */
+
+    envelope.classList.remove(
+        "open"
+    );
+
+
+    /* Restaurar botón */
+
+    openButton.disabled =
+        false;
+
+    openButton.textContent =
+        "ABRIR EL SOBRE";
+
+
+    /* Volver arriba */
+
+    window.scrollTo(
+        0,
+        0
+    );
+}
+
+
+/* =================================================
+   BOTONES
+================================================= */
+
+startButton.onclick =
+    function() {
+
+        showLetter();
+
+    };
+
+
+openButton.onclick =
+    function() {
+
+        openEnvelope();
+
+    };
+
+
+restartButton.onclick =
+    function() {
+
+        restart();
+
+    };
+
+
+/*
+   También se puede hacer clic directamente
+   sobre el sobre.
+*/
+
+envelopeWrapper.onclick =
+    function() {
+
+        if (!isOpening) {
+
+            openEnvelope();
+
         }
 
+    };
 
-        /* ==================================================
-           EVENTOS DE LOS BOTONES
-        ================================================== */
 
-        startButton.addEventListener(
-            "click",
-            showLetter
+/* =================================================
+   INICIO
+================================================= */
+
+window.onload =
+    function() {
+
+        cover.style.display =
+            "flex";
+
+        letterSection.classList.remove(
+            "show"
         );
 
-        openButton.addEventListener(
-            "click",
-            openEnvelope
+        revealSection.classList.remove(
+            "show"
         );
 
-        envelopeWrapper.addEventListener(
-            "click",
-            () => {
-
-                if (!animationRunning) {
-                    openEnvelope();
-                }
-
-            }
+        envelope.classList.remove(
+            "open"
         );
 
-        restartButton.addEventListener(
-            "click",
-            restartExperience
+        curtains.classList.remove(
+            "active"
         );
 
-
-        /* ==================================================
-           EVITAR PROBLEMAS AL RECARGAR
-        ================================================== */
-
-        window.addEventListener(
-            "load",
-            () => {
-
-                cover.style.display = "flex";
-
-                letterSection.classList.remove(
-                    "active"
-                );
-
-                revealSection.classList.remove(
-                    "active"
-                );
-
-                curtains.classList.remove(
-                    "active",
-                    "open"
-                );
-
-                envelope.classList.remove(
-                    "open"
-                );
-
-            }
+        curtains.classList.remove(
+            "open"
         );
-    </script>
+
+    };
+
+</script>
 
 </body>
 </html>
