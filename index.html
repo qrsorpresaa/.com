@@ -1,1 +1,1676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Una sorpresa muy especial</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    color: #5d4940;
+    background: #f7f0e9;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+#cover {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 22px;
+
+    position: relative;
+    overflow: hidden;
+
+    /*
+       FONDO DE BEBÉ DE GITHUB
+    */
+
+    background-image:
+        linear-gradient(
+            rgba(255,250,245,.15),
+            rgba(255,250,245,.15)
+        ),
+        url("https://raw.githubusercontent.com/qrsorpresaa/.com/main/fondo-bebe.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cover::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(255,255,255,.06);
+
+    pointer-events: none;
+}
+
+
+.cover-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(720px,100%);
+
+    padding: 20px;
+}
+
+
+/* pequeño título */
+
+.small-title {
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #987a6b;
+
+    margin-bottom: 20px;
+}
+
+
+/* título principal */
+
+.cover-title {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(52px,10vw,90px);
+
+    line-height: .95;
+
+    font-weight: 500;
+
+    color: #684d42;
+
+    text-shadow:
+        0 2px 15px rgba(255,255,255,.8);
+}
+
+
+/* texto */
+
+.cover-text {
+
+    max-width: 590px;
+
+    margin: 24px auto 0;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(21px,3vw,28px);
+
+    line-height: 1.35;
+
+    color: #70574d;
+}
+
+
+/* =========================================================
+   CORAZÓN
+========================================================= */
+
+.cover-heart {
+
+    display: block;
+
+    margin: 22px auto 30px;
+
+    font-size: 58px;
+
+    color: #9b6655;
+
+    line-height: 1;
+
+    animation: heartbeat 2.4s ease-in-out infinite;
+
+    text-shadow:
+        0 5px 18px rgba(110,70,55,.2);
+}
+
+
+/* =========================================================
+   BOTÓN CÁPSULA
+========================================================= */
+
+.main-button {
+
+    border: 0;
+
+    background: #765345;
+
+    color: #fffaf7;
+
+    padding: 17px 31px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 28px rgba(82,54,43,.22);
+
+    transition: .3s ease;
+}
+
+.main-button:hover {
+
+    transform: translateY(-3px);
+
+    background: #634338;
+
+    box-shadow:
+        0 17px 35px rgba(82,54,43,.27);
+}
+
+.main-button:disabled {
+    opacity: .6;
+    cursor: default;
+}
+
+
+/* =========================================================
+   SECCIÓN DEL SOBRE
+========================================================= */
+
+#letterSection {
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 15%,
+            #fffdf9 0%,
+            #f7eee7 48%,
+            #ead9cc 100%
+        );
+}
+
+#letterSection.show {
+    display: flex;
+}
+
+.letter-content {
+    width: min(650px,100%);
+}
+
+
+/* título */
+
+.letter-title {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(42px,7vw,62px);
+
+    font-weight: 500;
+
+    color: #684d42;
+
+    margin-bottom: 8px;
+}
+
+
+/* subtítulo */
+
+.letter-subtitle {
+
+    font-size: 14px;
+
+    letter-spacing: .5px;
+
+    line-height: 1.7;
+
+    color: #8d7165;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================================
+   ANIMALITOS
+========================================================= */
+
+.animalitos {
+
+    width: min(300px,70vw);
+
+    max-height: 210px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 22px;
+
+    filter:
+        drop-shadow(
+            0 8px 12px rgba(80,55,45,.10)
+        );
+}
+
+
+/* =========================================================
+   SOBRE PEQUEÑO
+========================================================= */
+
+.envelope-wrapper {
+
+    width: min(285px,76vw);
+
+    margin: 0 auto 22px;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+}
+
+.envelope {
+
+    width: 100%;
+
+    aspect-ratio: 1.45;
+
+    position: relative;
+
+    border-radius: 7px;
+
+    background: #cba18f;
+
+    box-shadow:
+        0 18px 38px rgba(79,51,41,.20);
+
+    transform-style: preserve-3d;
+}
+
+
+.envelope-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 7px;
+
+    background: #c99c89;
+}
+
+
+/* carta que sale */
+
+.envelope-letter {
+
+    position: absolute;
+
+    left: 8%;
+
+    bottom: 8%;
+
+    width: 84%;
+
+    height: 70%;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fffaf5;
+
+    border-radius: 4px;
+
+    color: #8e685a;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 18px;
+
+    transition:
+        transform 1s ease;
+}
+
+
+/* lado izquierdo */
+
+.envelope-left {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 52%;
+
+    height: 100%;
+
+    background: #d8b1a0;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 4;
+}
+
+
+/* lado derecho */
+
+.envelope-right {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 0;
+
+    width: 52%;
+
+    height: 100%;
+
+    background: #c38f7e;
+
+    clip-path:
+        polygon(
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 4;
+}
+
+
+/* parte inferior */
+
+.envelope-bottom {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #cf9f8c;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 42%,
+            100% 100%
+        );
+
+    z-index: 5;
+}
+
+
+/* solapa */
+
+.envelope-flap {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 64%;
+
+    background: #deb5a3;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform 1s ease;
+
+    z-index: 8;
+}
+
+
+/* =========================================================
+   PEGATINA ESTRELLA
+========================================================= */
+
+.star-seal {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+
+    top: 48%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 23px;
+
+    filter:
+        drop-shadow(
+            0 4px 6px rgba(76,49,39,.18)
+        );
+
+    transition:
+        opacity .4s ease,
+        transform .5s ease;
+}
+
+
+.star-seal::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #a97962;
+
+    clip-path:
+        polygon(
+            50% 0%,
+            61% 28%,
+            91% 20%,
+            72% 45%,
+            100% 58%,
+            68% 65%,
+            68% 96%,
+            50% 73%,
+            25% 100%,
+            29% 68%,
+            0% 62%,
+            27% 45%,
+            10% 18%,
+            40% 28%
+        );
+}
+
+
+.star-seal span {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.envelope.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+}
+
+
+.envelope.open .envelope-letter {
+
+    transform:
+        translateY(-70px);
+
+    z-index: 9;
+}
+
+
+.envelope.open .star-seal {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.6);
+}
+
+
+/* =========================================================
+   TEXTO DE CLICK
+========================================================= */
+
+.click-hint {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 21px;
+
+    color: #84675c;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   CORTINAS
+========================================================= */
+
+#curtains {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    background: #3c2923;
+}
+
+#curtains.active {
+    display: block;
+}
+
+
+.curtain {
+
+    position: absolute;
+
+    top: 0;
+
+    width: 53%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 38%,
+            rgba(255,225,207,.22),
+            transparent 36%
+        ),
+
+        repeating-linear-gradient(
+            90deg,
+            #6f5146 0px,
+            #876257 22px,
+            #a27a6a 39px,
+            #6c4d43 57px,
+            #927064 77px,
+            #62463d 96px
+        );
+
+    box-shadow:
+        inset 0 0 80px rgba(39,23,18,.38);
+
+    transition:
+        transform 4.5s
+        cubic-bezier(.72,0,.22,1);
+}
+
+
+.curtain::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(30,18,14,.28),
+            transparent 18%,
+            transparent 80%,
+            rgba(30,18,14,.28)
+        ),
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 15px,
+            rgba(255,255,255,.08) 16px 20px,
+            transparent 21px 36px
+        );
+}
+
+
+.curtain-left {
+
+    left: 0;
+
+    transform:
+        translateX(0);
+}
+
+
+.curtain-right {
+
+    right: 0;
+
+    transform:
+        translateX(0);
+}
+
+
+#curtains.open .curtain-left {
+
+    transform:
+        translateX(-105%);
+}
+
+
+#curtains.open .curtain-right {
+
+    transform:
+        translateX(105%);
+}
+
+
+/* =========================================================
+   REVELACIÓN
+========================================================= */
+
+#revealSection {
+
+    display: none;
+
+    min-height: 100vh;
+
+    padding:
+        90px 22px
+        110px;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 10%,
+            #fffdf9 0%,
+            #f5e8df 48%,
+            #e8d5c8 100%
+        );
+}
+
+
+#revealSection.show {
+    display: block;
+}
+
+
+.reveal-inner {
+
+    width: min(1050px,100%);
+
+    margin: auto;
+}
+
+
+.reveal-small {
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    font-size: 11px;
+
+    color: #a17c6c;
+
+    margin-bottom: 13px;
+}
+
+
+.reveal-title {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(52px,9vw,86px);
+
+    font-weight: 500;
+
+    line-height: .95;
+
+    color: #684d42;
+
+    margin-bottom: 25px;
+}
+
+
+.reveal-message {
+
+    width: min(700px,100%);
+
+    margin: 0 auto;
+}
+
+
+.reveal-message p {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.55;
+
+    color: #71594f;
+
+    margin-bottom: 18px;
+}
+
+
+.big-message {
+
+    font-size:
+        clamp(34px,6vw,54px) !important;
+
+    color: #986756 !important;
+
+    line-height: 1.08 !important;
+
+    margin: 25px 0 !important;
+}
+
+
+.final-message {
+
+    color: #876356 !important;
+
+    font-size: 25px !important;
+
+    margin-top: 24px !important;
+}
+
+
+/* =========================================================
+   FOTOS
+========================================================= */
+
+.photos-title {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+
+    color: #76584d;
+
+    margin:
+        90px 0 12px;
+}
+
+
+.photos-subtitle {
+
+    font-size: 13px;
+
+    color: #987a6d;
+
+    margin-bottom: 30px;
+}
+
+
+.photos {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 22px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+.photo {
+
+    position: relative;
+
+    min-height: 270px;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #eadbd1;
+
+    box-shadow:
+        0 14px 35px rgba(76,51,41,.13);
+}
+
+
+.photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.photo:hover img {
+
+    transform:
+        scale(1.04);
+}
+
+
+/* espacios 4 y 5 */
+
+.photo.empty::after {
+
+    content:
+        "Tu foto aquí";
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 24px;
+
+    color: #a8897c;
+}
+
+
+.photo.empty::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 18px;
+
+    border:
+        1px dashed #c4a89b;
+
+    border-radius: 7px;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   MENSAJE FINAL
+========================================================= */
+
+.footer-message {
+
+    margin:
+        70px auto 0;
+
+    max-width: 700px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    color: #7d5e52;
+}
+
+
+.footer-heart {
+
+    font-size: 34px;
+
+    color: #a06e5d;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   ANIMACIÓN CORAZÓN
+========================================================= */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media(max-width:700px) {
+
+    #cover {
+        background-position: center;
+    }
+
+    .cover-content {
+        padding: 10px;
+    }
+
+    .cover-title {
+        font-size: 50px;
+    }
+
+    .cover-text {
+        font-size: 22px;
+    }
+
+    .cover-heart {
+        font-size: 50px;
+    }
+
+    .main-button {
+        padding:
+            16px 24px;
+    }
+
+    .letter-title {
+        font-size: 45px;
+    }
+
+    .animalitos {
+        width: 250px;
+        max-height: 170px;
+    }
+
+    .envelope-wrapper {
+        width: 250px;
+    }
+
+    .curtain {
+        width: 56%;
+    }
+
+    .reveal-title {
+        font-size: 55px;
+    }
+
+    .reveal-message p {
+        font-size: 20px;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+    }
+
+    .photo {
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+    }
+
+    .photos-title {
+        margin-top: 70px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     PORTADA
+========================================================= -->
+
+<section id="cover">
+
+    <div class="cover-content">
+
+        <div class="small-title">
+            Una pequeña sorpresa
+        </div>
+
+
+        <h1 class="cover-title">
+
+            ¡Aquí hay algo
+            <br>
+            especial para ustedes!
+
+        </h1>
+
+
+        <p class="cover-text">
+
+            Hemos preparado algo muy especial
+            que queremos compartir con ustedes
+            de una manera inolvidable.
+
+        </p>
+
+
+        <!-- CORAZÓN DEBAJO DEL MENSAJE -->
+
+        <div class="cover-heart">
+            ♥
+        </div>
+
+
+        <!-- CÁPSULA -->
+
+        <button
+            class="main-button"
+            id="startButton"
+        >
+
+            DESCUBRIR LA SORPRESA
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CARTA / SOBRE
+========================================================= -->
+
+<section id="letterSection">
+
+    <div class="letter-content">
+
+
+        <h2 class="letter-title">
+
+            Hay algo para ustedes…
+
+        </h2>
+
+
+        <p class="letter-subtitle">
+
+            Hemos guardado un pequeño secreto
+            dentro de este sobre.
+
+        </p>
+
+
+        <!-- IMAGEN ANIMALITOS -->
+
+        <img
+            src="https://raw.githubusercontent.com/qrsorpresaa/.com/main/Animalitos.png"
+            class="animalitos"
+            alt="Animalitos"
+        >
+
+
+        <!-- SOBRE -->
+
+        <div
+            class="envelope-wrapper"
+            id="envelopeWrapper"
+        >
+
+            <div
+                class="envelope"
+                id="envelope"
+            >
+
+                <div class="envelope-back"></div>
+
+
+                <div class="envelope-letter">
+
+                    Con muchísimo amor ♥
+
+                </div>
+
+
+                <div class="envelope-left"></div>
+
+                <div class="envelope-right"></div>
+
+                <div class="envelope-bottom"></div>
+
+                <div class="envelope-flap"></div>
+
+
+                <!-- PEGATINA -->
+
+                <div class="star-seal">
+
+                    <span>★</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p class="click-hint">
+
+            ✦ Hagan click en el sobre
+            para descubrirlo ✦
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CORTINAS
+========================================================= -->
+
+<div id="curtains">
+
+    <div class="curtain curtain-left"></div>
+
+    <div class="curtain curtain-right"></div>
+
+</div>
+
+
+
+<!-- =========================================================
+     REVELACIÓN
+========================================================= -->
+
+<section id="revealSection">
+
+    <div class="reveal-inner">
+
+
+        <div class="reveal-small">
+
+            Tenemos algo que contarles
+
+        </div>
+
+
+        <h2 class="reveal-title">
+
+            ¡La familia crece!
+
+        </h2>
+
+
+        <div class="reveal-message">
+
+
+            <p>
+
+                Julio César y yo tenemos
+                un pequeño secreto que llevamos
+                un tiempo guardando con muchísimo amor…
+
+            </p>
+
+
+            <p class="big-message">
+
+                ¡Estamos esperando un bebé!
+
+            </p>
+
+
+            <p>
+
+                Nuestros corazones están llenos
+                de ilusión, emoción y felicidad.
+                Muy pronto llegará una personita
+                que cambiará nuestras vidas
+                para siempre.
+
+            </p>
+
+
+            <p>
+
+                Queríamos compartir esta noticia
+                con ustedes de una forma tan especial
+                como lo es este momento.
+
+            </p>
+
+
+            <p class="final-message">
+
+                Prepárense para nuevos abrazos,
+                nuevas aventuras y muchísimo amor.
+
+            </p>
+
+
+            <p class="final-message">
+
+                ¡La familia está a punto de crecer! ♥
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOTOS
+        ================================================== -->
+
+        <h3 class="photos-title">
+
+            Un recuerdo de este momento
+
+        </h3>
+
+
+        <p class="photos-subtitle">
+
+            Cinco momentos para guardar para siempre.
+
+        </p>
+
+
+        <div class="photos">
+
+
+            <!-- FOTO 1 -->
+
+            <div class="photo">
+
+                <img
+                    src="foto1.jpeg"
+                    alt="Foto 1"
+                >
+
+            </div>
+
+
+            <!-- FOTO 2 -->
+
+            <div class="photo">
+
+                <img
+                    src="foto2.jpeg"
+                    alt="Foto 2"
+                >
+
+            </div>
+
+
+            <!-- FOTO 3 -->
+
+            <div class="photo">
+
+                <img
+                    src="foto3.jpeg"
+                    alt="Foto 3"
+                >
+
+            </div>
+
+
+            <!-- FOTO 4 -->
+
+            <div class="photo empty">
+
+                <!--
+
+                Cuando tengas la foto 4,
+                cambia este bloque por:
+
+                <img
+                    src="foto4.jpeg"
+                    alt="Foto 4"
+                >
+
+                -->
+
+            </div>
+
+
+            <!-- FOTO 5 -->
+
+            <div class="photo empty">
+
+                <!--
+
+                Cuando tengas la foto 5,
+                cambia este bloque por:
+
+                <img
+                    src="foto5.jpeg"
+                    alt="Foto 5"
+                >
+
+                -->
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- MENSAJE FINAL -->
+
+        <p class="footer-message">
+
+            “Hay momentos que duran un instante,
+            pero se quedan para siempre en el corazón.
+            Este es uno de ellos.”
+
+        </p>
+
+
+        <div class="footer-heart">
+
+            ♥
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const cover =
+    document.getElementById("cover");
+
+const letterSection =
+    document.getElementById("letterSection");
+
+const revealSection =
+    document.getElementById("revealSection");
+
+const startButton =
+    document.getElementById("startButton");
+
+const envelopeWrapper =
+    document.getElementById("envelopeWrapper");
+
+const envelope =
+    document.getElementById("envelope");
+
+const curtains =
+    document.getElementById("curtains");
+
+
+let starting = false;
+
+let opening = false;
+
+
+/* =========================================================
+   BOTÓN CÁPSULA
+========================================================= */
+
+function startExperience() {
+
+    if (starting) {
+        return;
+    }
+
+    starting = true;
+
+    startButton.disabled = true;
+
+
+    /*
+       Ocultamos portada
+    */
+
+    cover.style.display = "none";
+
+
+    /*
+       Mostramos sección del sobre
+    */
+
+    letterSection.classList.add("show");
+
+
+    /*
+       Volvemos arriba
+    */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
+
+    starting = false;
+
+    startButton.disabled = false;
+
+}
+
+
+
+/* =========================================================
+   ABRIR SOBRE
+========================================================= */
+
+function openEnvelope() {
+
+    if (opening) {
+        return;
+    }
+
+    opening = true;
+
+
+    /*
+       Abrimos el sobre
+    */
+
+    envelope.classList.add("open");
+
+
+    /*
+       Esperamos un poquito
+       para que se vea cómo se abre
+    */
+
+    setTimeout(function() {
+
+
+        /*
+           Aparecen las cortinas
+        */
+
+        curtains.classList.add("active");
+
+        curtains.classList.remove("open");
+
+
+        /*
+           Las abrimos después
+        */
+
+        setTimeout(function() {
+
+            curtains.classList.add("open");
+
+        }, 100);
+
+
+        /*
+           Después de aproximadamente
+           4,7 segundos aparece el mensaje
+        */
+
+        setTimeout(function() {
+
+
+            curtains.classList.remove("active");
+
+
+            letterSection.classList.remove("show");
+
+
+            revealSection.classList.add("show");
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+
+            opening = false;
+
+
+        }, 4700);
+
+
+    }, 900);
+
+}
+
+
+
+/* =========================================================
+   EVENTOS
+========================================================= */
+
+startButton.addEventListener(
+    "click",
+    startExperience
+);
+
+
+envelopeWrapper.addEventListener(
+    "click",
+    openEnvelope
+);
+
+</script>
+
+
+</body>
+</html>
