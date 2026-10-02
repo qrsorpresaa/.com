@@ -1,1872 +1,1091 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Una sorpresa especial</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   GENERAL
-========================================================= */
+:root {
+  --cream: #fff8f0;
+  --brown: #76533e;
+  --dark: #604331;
+  --tan: #d8b79e;
+  --light: #f5e8dc;
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    background: #f6eee5;
-    color: #5c493e;
-    overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  background: #f6eee5;
+  color: var(--dark);
+  overflow-x: hidden;
 }
 
 button {
-    font-family: inherit;
+  font: inherit;
 }
 
-
-/* =========================================================
-   PORTADA
-========================================================= */
+/* PORTADA */
 
 #cover {
-    min-height: 100vh;
-    width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 32px 18px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: #c5a184;
+  background-image:
+    linear-gradient(
+      115deg,
+      rgba(105, 68, 44, 0.25),
+      rgba(84, 52, 34, 0.48)
+    ),
+    url("https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=2000&q=90");
 
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-
-    background-image:
-        linear-gradient(
-            rgba(255, 248, 239, 0.22),
-            rgba(255, 248, 239, 0.22)
-        ),
-        url("fondo-bebe.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-position: center 58%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .cover-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 249, 241, 0.12);
-    pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(76, 48, 31, 0.12),
+    rgba(74, 46, 29, 0.32)
+  );
+  z-index: -1;
 }
 
 .cover-content {
-    position: relative;
-    z-index: 2;
-    width: min(900px, 92%);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 40px 20px;
+  width: min(850px, 100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  color: var(--cream);
+  text-shadow: 0 2px 15px rgba(48, 29, 18, 0.32);
 }
 
 .cover-small {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #80685a;
-    margin-bottom: 25px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+  color: #fff0e2;
 }
 
 .cover-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(48px, 8vw, 88px);
-    line-height: 0.95;
-    font-weight: 500;
-    color: #6a5042;
+  font: 500 clamp(42px, 7vw, 76px)/1.04 "Cormorant Garamond", serif;
+  max-width: 800px;
 }
 
 .cover-title span {
-    display: block;
+  display: block;
 }
-
-.cover-text {
-    margin-top: 28px;
-    max-width: 600px;
-    font-size: 15px;
-    line-height: 1.8;
-    color: #765f52;
-}
-
-
-/* =========================================================
-   CORAZÓN
-========================================================= */
 
 .cover-heart {
-    margin-top: 28px;
-    font-size: 58px;
-    color: #9c7461;
-    line-height: 1;
-
-    animation: heartbeat 1.8s ease-in-out infinite;
+  font-size: 55px;
+  line-height: 1;
+  margin-top: 22px;
+  color: #fff0e5;
+  animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
 }
 
-
-/* =========================================================
-   BOTÓN
-========================================================= */
-
 .discover-btn {
-    margin-top: 38px;
-
-    border: none;
-    outline: none;
-
-    background: #76594a;
-    color: white;
-
-    padding: 16px 34px;
-    border-radius: 50px;
-
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-
-    box-shadow: 0 10px 25px rgba(88, 64, 52, 0.18);
+  margin-top: 25px;
+  padding: 15px 35px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 248, 239, 0.9);
+  background: rgba(255, 247, 239, 0.95);
+  color: #684633;
+  letter-spacing: 1.2px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(64, 40, 25, 0.21);
+  transition: transform 0.25s, background 0.25s;
 }
 
 .discover-btn:hover {
-    transform: translateY(-3px);
-    background: #62483c;
-    box-shadow: 0 15px 30px rgba(88, 64, 52, 0.25);
+  transform: translateY(-3px);
+  background: #fff;
 }
 
-
-/* =========================================================
-   SECCIÓN DEL SOBRE
-========================================================= */
+/* SECCIÓN DEL SOBRE */
 
 #letterSection {
-    min-height: 100vh;
-    width: 100%;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #fffaf5 0%,
-            #f7eee5 45%,
-            #eee1d5 100%
-        );
-
-    padding: 70px 20px;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 55px 18px 70px;
+  background: radial-gradient(
+    ellipse at top,
+    #fffaf5 0%,
+    #f0dfcf 78%
+  );
 }
 
 .letter-content {
-    width: min(700px, 100%);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: min(700px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .letter-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(42px, 7vw, 68px);
-    font-weight: 500;
-    color: #654d40;
-    margin-bottom: 12px;
+  font: 500 clamp(36px, 6vw, 58px)/1.08 "Cormorant Garamond", serif;
+  color: #654d40;
+  margin-bottom: 12px;
 }
 
 .letter-subtitle {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #866f61;
-    max-width: 500px;
-    margin-bottom: 25px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #866f61;
+  max-width: 500px;
+  margin-bottom: 28px;
 }
 
-
-/* =========================================================
-   ANIMALITOS
-========================================================= */
+/* ANIMALITOS */
 
 .animalitos {
-    width: min(280px, 65vw);
-    max-height: 190px;
-    object-fit: contain;
-
-    display: block;
-
-    margin: 0 auto 20px;
+  display: block;
+  width: min(340px, 82vw);
+  max-height: 250px;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 14px rgba(80, 53, 38, 0.12));
+  margin: 0 auto 22px;
 }
 
-
-/* =========================================================
-   ÁREA DEL SOBRE
-========================================================= */
+/* JIRAFA */
 
 .envelope-area {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  perspective: 1000px;
 }
 
-
-/* =========================================================
-   JIRAFA ENCIMA DEL SOBRE
-========================================================= */
-
 .giraffe-container {
-    width: 100%;
-    height: 125px;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    position: relative;
-    z-index: 6;
-
-    margin-bottom: -5px;
-
-    pointer-events: none;
+  height: 245px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 6;
+  margin-bottom: -5px;
+  pointer-events: none;
 }
 
 .giraffe {
-    width: min(145px, 35vw);
-    max-height: 125px;
-
-    object-fit: contain;
-
-    display: block;
-
-    filter: drop-shadow(
-        0 7px 10px rgba(75, 54, 42, 0.12)
-    );
-
-    transform-origin: bottom center;
-
-    animation: giraffeFloat 4s ease-in-out infinite;
+  width: min(310px, 78vw);
+  height: 245px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 7px 10px rgba(75, 54, 42, 0.15));
+  transform-origin: bottom center;
+  animation: giraffeFloat 4s ease-in-out infinite;
 }
 
 @keyframes giraffeFloat {
-
-    0%, 100% {
-        transform: translateY(0) rotate(-1deg);
-    }
-
-    50% {
-        transform: translateY(-5px) rotate(1deg);
-    }
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
 }
 
-
-/* =========================================================
-   SOBRE
-========================================================= */
+/* SOBRE */
 
 .envelope {
-    width: min(285px, 76vw);
-    height: 185px;
-
-    position: relative;
-
-    cursor: pointer;
-
-    filter: drop-shadow(
-        0 15px 22px rgba(75, 54, 42, 0.18)
-    );
-
-    transition:
-        transform 0.35s ease,
-        filter 0.35s ease;
+  width: min(310px, 80vw);
+  height: 195px;
+  position: relative;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(0 15px 22px rgba(75, 54, 42, 0.18));
+  transition: transform 0.3s, filter 0.3s;
+  isolation: isolate;
 }
 
 .envelope:hover {
-    transform: translateY(-5px);
-
-    filter: drop-shadow(
-        0 20px 28px rgba(75, 54, 42, 0.24)
-    );
+  transform: translateY(-3px);
+  filter: drop-shadow(0 20px 28px rgba(75, 54, 42, 0.24));
 }
 
-
-/* =========================================================
-   CUERPO DEL SOBRE
-========================================================= */
+.envelope:focus-visible {
+  outline: 3px solid #8e674f;
+  outline-offset: 7px;
+}
 
 .envelope-body {
-    position: absolute;
-    inset: 0;
-
-    background: #d9b69d;
-
-    border-radius: 4px;
-
-    overflow: hidden;
+  position: absolute;
+  inset: 0;
+  background: #d9b69d;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 3;
 }
 
 .envelope-body::before {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left: 142px solid #cfa88e;
-    border-top: 92px solid transparent;
-    border-bottom: 0 solid transparent;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 155px solid #cfa88e;
+  border-top: 98px solid transparent;
 }
 
 .envelope-body::after {
-    content: "";
-
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-    width: 0;
-    height: 0;
-
-    border-right: 142px solid #c59d83;
-    border-top: 92px solid transparent;
-    border-bottom: 0 solid transparent;
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-right: 155px solid #c59d83;
+  border-top: 98px solid transparent;
 }
 
-
-/* =========================================================
-   SOLAPA
-========================================================= */
+.envelope-label {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  bottom: 27px;
+  z-index: 5;
+  text-align: center;
+  font: 600 20px/1.2 "Cormorant Garamond", serif;
+  letter-spacing: 0.5px;
+  color: #fff8f1;
+  text-shadow: 0 1px 2px rgba(95, 65, 48, 0.18);
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
 
 .envelope-flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left: 142px solid transparent;
-    border-right: 142px solid transparent;
-    border-top: 98px solid #e2c1aa;
-
-    z-index: 3;
-
-    transform-origin: top center;
-
-    transition:
-        transform 1.15s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 155px solid transparent;
+  border-right: 155px solid transparent;
+  border-top: 105px solid #e2c1aa;
+  z-index: 4;
+  transform-origin: top center;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: visible;
 }
 
-
-/* =========================================================
-   CARTA INTERIOR
-========================================================= */
+/* CARTA QUE SALE DEL SOBRE */
 
 .paper {
-    position: absolute;
-
-    width: 78%;
-    height: 125px;
-
-    left: 11%;
-    top: 35px;
-
-    background: #fffaf4;
-
-    border-radius: 2px;
-
-    z-index: 2;
-
-    transition:
-        transform 1.15s cubic-bezier(0.4, 0, 0.2, 1),
-        top 1.15s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  width: 80%;
+  height: 135px;
+  left: 10%;
+  top: 28px;
+  background: #fffaf4;
+  border-radius: 3px;
+  z-index: 2;
+  box-shadow: 0 6px 18px rgba(86, 61, 45, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition:
+    top 1.4s cubic-bezier(0.22, 0.75, 0.2, 1),
+    transform 1.4s cubic-bezier(0.22, 0.75, 0.2, 1);
 }
 
+.paper::after {
+  content: "Una alegría preciosa está a punto de llegar ♥";
+  display: block;
+  color: #8b6650;
+  font: 500 clamp(13px, 2.8vw, 17px)/1.35 "Cormorant Garamond", serif;
+  text-align: center;
+}
 
-/* =========================================================
-   SOBRE ABIERTO
-========================================================= */
+.star-seal {
+  position: absolute;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  color: #fff3e5;
+  font-size: 23px;
+  text-shadow: 0 2px 5px rgba(128, 88, 62, 0.28);
+  transition: opacity 0.3s;
+}
+
+.envelope.open {
+  cursor: default;
+}
+
+.envelope.open:hover {
+  transform: none;
+}
 
 .envelope.open .envelope-flap {
-    transform: rotateX(180deg);
+  transform: rotateX(180deg);
+  z-index: 1;
 }
 
 .envelope.open .paper {
-    top: -75px;
-    transform: translateY(-5px);
+  top: -112px;
+  transform: scale(1.04);
+  z-index: 6;
 }
 
-
-/* =========================================================
-   PEGATINA
-========================================================= */
-
-.star-seal {
-    position: absolute;
-
-    left: 50%;
-    top: 87px;
-
-    transform: translate(-50%, -50%);
-
-    width: 54px;
-    height: 54px;
-
-    z-index: 5;
-
-    border-radius: 50%;
-
-    background: #a47b65;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #fffaf5;
-
-    font-size: 24px;
-
-    box-shadow:
-        0 5px 12px rgba(80, 54, 43, 0.2);
-
-    transition:
-        transform 0.8s ease,
-        opacity 0.6s ease;
-}
-
+.envelope.open .envelope-label,
 .envelope.open .star-seal {
-    opacity: 0;
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.3);
+  opacity: 0;
 }
-
-
-/* =========================================================
-   TEXTO DEL SOBRE
-========================================================= */
 
 .envelope-hint {
-    margin-top: 32px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 24px;
-    font-weight: 500;
-
-    color: #73594c;
-
-    animation: softPulse 2s ease-in-out infinite;
-
-    transition:
-        opacity 0.8s ease;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #8a6b57;
+  margin-top: 25px;
+  animation: hintPulse 2s ease-in-out infinite;
 }
 
-.envelope.open + .envelope-hint {
-    opacity: 0;
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
-@keyframes softPulse {
-    0%, 100% {
-        opacity: 0.65;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   TRANSICIÓN DE NUBES
-========================================================= */
+/* NUBES: SE JUNTAN EN EL CENTRO Y SE ABREN */
 
 #cloudTransition {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: none;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 255, 255, 0.98) 0%,
-            rgba(255, 251, 247, 0.96) 45%,
-            rgba(248, 239, 231, 0.95) 100%
-        );
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
 }
-
-
-/* CAPA SUAVE DE LUZ */
 
 .cloud-light {
-    position: absolute;
-
-    inset: -20%;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(255,255,255,1) 0%,
-            rgba(255,255,255,0.85) 30%,
-            rgba(255,255,255,0) 65%
-        );
-
-    opacity: 0;
-
-    transform: scale(0.9);
-
-    filter: blur(12px);
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 248, 239, 0.12);
+  opacity: 0;
 }
-
-
-/* CONTENEDORES DE NUBES */
-
-.clouds {
-    position: absolute;
-
-    inset: 0;
-
-    overflow: hidden;
-}
-
-
-/* NUBE GENERAL */
 
 .cloud {
-    position: absolute;
-
-    width: 300px;
-    height: 125px;
-
-    background: rgba(255,255,255,0.97);
-
-    border-radius: 100px;
-
-    filter:
-        blur(1px)
-        drop-shadow(
-            0 12px 25px rgba(210, 195, 183, 0.12)
-        );
-
-    opacity: 0;
-
-    will-change:
-        transform,
-        opacity;
+  position: absolute;
+  width: 58vw;
+  height: 60vh;
+  min-width: 380px;
+  min-height: 330px;
+  background: radial-gradient(
+    ellipse at 45% 45%,
+    #fffdf8 0%,
+    #fff9f0 58%,
+    #f8eadc 100%
+  );
+  border-radius: 50%;
+  filter: drop-shadow(0 0 14px rgba(255, 248, 240, 0.65));
+  top: 20vh;
 }
-
-
-/* FORMAS REDONDEADAS */
 
 .cloud::before,
 .cloud::after {
-    content: "";
-
-    position: absolute;
-
-    background: rgba(255,255,255,0.97);
-
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
 }
 
 .cloud::before {
-    width: 155px;
-    height: 155px;
-
-    left: 38px;
-    bottom: 15px;
+  width: 70%;
+  height: 75%;
+  left: 8%;
+  top: -20%;
 }
 
 .cloud::after {
-    width: 120px;
-    height: 120px;
-
-    right: 40px;
-    bottom: 10px;
+  width: 78%;
+  height: 82%;
+  right: 0;
+  top: 5%;
 }
 
-
-/* NUBES IZQUIERDAS */
-
-.cloud-left-1 {
-    left: -90px;
-    top: 25%;
-
-    transform: translateX(-80px) scale(1.15);
+.cloud-left {
+  left: -65vw;
+  transform: translateX(-10vw);
 }
 
-.cloud-left-2 {
-    left: -140px;
-    top: 51%;
-
-    transform: translateX(-100px) scale(0.95);
+.cloud-right {
+  right: -65vw;
+  transform: translateX(10vw);
 }
 
-.cloud-left-3 {
-    left: -100px;
-    bottom: 8%;
+.cloud-left.c1 { top: -10vh; height: 70vh; }
+.cloud-left.c2 { top: 25vh; height: 65vh; width: 65vw; }
+.cloud-left.c3 { top: 55vh; height: 65vh; width: 70vw; }
+.cloud-left.c4 { top: 10vh; height: 58vh; width: 48vw; }
+.cloud-left.c5 { top: 45vh; height: 60vh; width: 56vw; }
+.cloud-left.c6 { top: 65vh; height: 48vh; width: 52vw; }
 
-    transform: translateX(-90px) scale(1.25);
-}
-
-
-/* NUBES DERECHAS */
-
-.cloud-right-1 {
-    right: -90px;
-    top: 19%;
-
-    transform: translateX(80px) scale(1.2);
-}
-
-.cloud-right-2 {
-    right: -150px;
-    top: 47%;
-
-    transform: translateX(100px) scale(0.95);
-}
-
-.cloud-right-3 {
-    right: -100px;
-    bottom: 10%;
-
-    transform: translateX(90px) scale(1.25);
-}
-
-
-/* =========================================================
-   ANIMACIÓN DE LAS NUBES
-========================================================= */
+.cloud-right.c1 { top: -8vh; height: 70vh; }
+.cloud-right.c2 { top: 22vh; height: 65vh; width: 66vw; }
+.cloud-right.c3 { top: 54vh; height: 65vh; width: 70vw; }
+.cloud-right.c4 { top: 8vh; height: 58vh; width: 48vw; }
+.cloud-right.c5 { top: 44vh; height: 60vh; width: 56vw; }
+.cloud-right.c6 { top: 66vh; height: 48vh; width: 52vw; }
 
 #cloudTransition.active .cloud-light {
-    animation:
-        cloudLightIn 1.8s ease-out forwards;
+  animation: cloudLight 5s ease-in-out forwards;
 }
 
-
-#cloudTransition.active .cloud-left-1 {
-    animation:
-        cloudAppearLeft 1.7s ease-out 0.1s forwards,
-        cloudMoveLeft 3.2s ease-in-out 1.35s forwards;
+#cloudTransition.active .cloud-left {
+  animation: cloudLeft 5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-#cloudTransition.active .cloud-left-2 {
-    animation:
-        cloudAppearLeft 1.8s ease-out 0.2s forwards,
-        cloudMoveLeft 3.5s ease-in-out 1.45s forwards;
+#cloudTransition.active .cloud-right {
+  animation: cloudRight 5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
-#cloudTransition.active .cloud-left-3 {
-    animation:
-        cloudAppearLeft 1.9s ease-out 0.35s forwards,
-        cloudMoveLeft 3.3s ease-in-out 1.55s forwards;
+@keyframes cloudLeft {
+  0% { transform: translateX(-12vw); }
+  30%, 58% { transform: translateX(66vw); }
+  100% { transform: translateX(-110vw); }
 }
 
-
-#cloudTransition.active .cloud-right-1 {
-    animation:
-        cloudAppearRight 1.7s ease-out 0.1s forwards,
-        cloudMoveRight 3.2s ease-in-out 1.35s forwards;
+@keyframes cloudRight {
+  0% { transform: translateX(12vw); }
+  30%, 58% { transform: translateX(-66vw); }
+  100% { transform: translateX(110vw); }
 }
 
-#cloudTransition.active .cloud-right-2 {
-    animation:
-        cloudAppearRight 1.8s ease-out 0.2s forwards,
-        cloudMoveRight 3.5s ease-in-out 1.45s forwards;
+@keyframes cloudLight {
+  0%, 15% { opacity: 0; }
+  35%, 58% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-#cloudTransition.active .cloud-right-3 {
-    animation:
-        cloudAppearRight 1.9s ease-out 0.35s forwards,
-        cloudMoveRight 3.3s ease-in-out 1.55s forwards;
-}
-
-
-/* ENTRADA SUAVE */
-
-@keyframes cloudLightIn {
-
-    0% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    45% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0.75;
-        transform: scale(1.05);
-    }
-}
-
-
-@keyframes cloudAppearLeft {
-
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-
-@keyframes cloudAppearRight {
-
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-
-/* SEPARACIÓN LENTA HACIA LOS LADOS */
-
-@keyframes cloudMoveLeft {
-
-    0% {
-        opacity: 1;
-        transform:
-            translateX(0)
-            scale(1.15);
-        filter:
-            blur(1px)
-            drop-shadow(
-                0 12px 25px rgba(210,195,183,0.12)
-            );
-    }
-
-    45% {
-        opacity: 0.96;
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translateX(-125%)
-            scale(1.08);
-        filter:
-            blur(7px)
-            drop-shadow(
-                0 12px 25px rgba(210,195,183,0)
-            );
-    }
-}
-
-
-@keyframes cloudMoveRight {
-
-    0% {
-        opacity: 1;
-        transform:
-            translateX(0)
-            scale(1.15);
-        filter:
-            blur(1px)
-            drop-shadow(
-                0 12px 25px rgba(210,195,183,0.12)
-            );
-    }
-
-    45% {
-        opacity: 0.96;
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            translateX(125%)
-            scale(1.08);
-        filter:
-            blur(7px)
-            drop-shadow(
-                0 12px 25px rgba(210,195,183,0)
-            );
-    }
-}
-
-
-/* =========================================================
-   REVELACIÓN
-========================================================= */
+/* REVELACIÓN */
 
 #reveal {
-    display: none;
-
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #fffaf5 0%,
-            #f5e9df 50%,
-            #eadacd 100%
-        );
-
-    padding: 90px 20px;
-
-    text-align: center;
-
-    opacity: 0;
-
-    transform: translateY(12px);
-
-    transition:
-        opacity 2s ease,
-        transform 2s ease;
+  display: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  text-align: center;
+  padding: 80px 18px 35px;
+  background: radial-gradient(
+    ellipse at top,
+    #fffaf5 0%,
+    #f4e5d7 58%,
+    #e9d2bf 100%
+  );
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 #reveal.visible {
-    opacity: 1;
-
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .reveal-content {
-    width: min(1000px, 100%);
-    margin: 0 auto;
+  width: min(1050px, 100%);
+  margin: 0 auto;
 }
 
 .reveal-small {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #92796b;
-    margin-bottom: 20px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #987963;
+  margin-bottom: 15px;
 }
 
 .reveal-title {
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(52px, 9vw, 100px);
-
-    line-height: 0.95;
-
-    font-weight: 500;
-
-    color: #684d40;
+  font: 500 clamp(48px, 8vw, 82px)/1.05 "Cormorant Garamond", serif;
+  color: #76533e;
+  margin-bottom: 22px;
 }
 
 .reveal-title span {
-    color: #a47a63;
+  display: block;
+  font-weight: 600;
+}
+
+.elephant-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  margin: 0 auto 20px;
+}
+
+.elephant-illustration {
+  width: min(420px, 90vw);
+  max-height: 290px;
+  margin: 0;
+  animation: animalPop 0.9s both;
+}
+
+@keyframes animalPop {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .reveal-text {
-    margin: 30px auto 0;
-
-    max-width: 700px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 27px;
-    line-height: 1.45;
-
-    color: #71594c;
+  max-width: 680px;
+  margin: 0 auto 18px;
+  font: 400 clamp(19px, 3vw, 25px)/1.6 "Cormorant Garamond", serif;
+  color: #795b47;
 }
 
 .baby-message {
-    margin-top: 30px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: clamp(35px, 6vw, 58px);
-
-    color: #9a705b;
-
-    font-weight: 600;
+  font: 600 clamp(25px, 4.5vw, 40px)/1.25 "Cormorant Garamond", serif;
+  color: #9a6848;
+  margin: 24px 0;
 }
-
-
-/* =========================================================
-   MENSAJE FINAL
-========================================================= */
 
 .final-message {
-    max-width: 680px;
-
-    margin: 35px auto 0;
-
-    font-size: 15px;
-
-    line-height: 1.9;
-
-    color: #806b5e;
+  max-width: 760px;
+  margin: 0 auto 50px;
+  font-size: 14px;
+  line-height: 2;
+  color: #765e4f;
 }
 
-
-/* =========================================================
-   FOTOS
-========================================================= */
+/* FOTOGRAFÍAS */
 
 .photos-title {
-    margin-top: 100px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 42px;
-
-    color: #684d40;
+  font: 500 clamp(32px, 5vw, 48px)/1.15 "Cormorant Garamond", serif;
+  color: #76533e;
+  margin: 0 auto 10px;
 }
 
 .photos-subtitle {
-    margin-top: 10px;
-
-    font-size: 13px;
-
-    color: #947d70;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #8b7362;
+  margin-bottom: 28px;
 }
-
-
-/* =========================================================
-   CONTENEDOR DE 6 FOTOS
-========================================================= */
 
 .photo-grid {
-    width: min(950px, 100%);
-
-    margin: 40px auto 0;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: min(950px, 100%);
+  margin: 0 auto 55px;
 }
-
-
-/* =========================================================
-   FOTO
-========================================================= */
 
 .photo-card {
-    background: #fffaf5;
-
-    padding: 10px;
-
-    box-shadow:
-        0 10px 25px rgba(90, 65, 52, 0.10);
-
-    min-height: 260px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
+  overflow: hidden;
+  border: 8px solid rgba(255, 250, 245, 0.9);
+  border-radius: 5px;
+  background: #e8d5c4;
+  box-shadow: 0 8px 22px rgba(95, 66, 46, 0.13);
+  aspect-ratio: 4 / 5;
+  opacity: 0;
+  transform: translateY(25px) scale(0.98);
+  animation: photoIn 0.8s ease forwards;
 }
 
-.photo-card:hover {
-    transform: translateY(-5px);
-
-    box-shadow:
-        0 16px 30px rgba(90, 65, 52, 0.14);
-}
+.photo-card:nth-child(2) { animation-delay: 0.12s; }
+.photo-card:nth-child(3) { animation-delay: 0.24s; }
+.photo-card:nth-child(4) { animation-delay: 0.36s; }
+.photo-card:nth-child(5) { animation-delay: 0.48s; }
+.photo-card:nth-child(6) { animation-delay: 0.6s; }
 
 .photo-card img {
-    width: 100%;
-    height: 240px;
-
-    object-fit: cover;
-
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
-
-/* =========================================================
-   PLACEHOLDER
-========================================================= */
 
 .photo-placeholder {
-    width: 100%;
-    height: 240px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            #f2e6dc,
-            #f2e6dc 10px,
-            #ecded3 10px,
-            #ecded3 20px
-        );
-
-    color: #a3897b;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 25px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #987963;
+  font: italic 20px "Cormorant Garamond", serif;
 }
 
+@keyframes photoIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* MENSAJE FINAL */
 
 .footer {
-    margin-top: 90px;
-
-    padding-top: 35px;
-
-    border-top: 1px solid rgba(110, 82, 67, 0.15);
+  padding: 20px 15px 10px;
+  border-top: 1px solid #d9c1ad;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .footer-heart {
-    font-size: 30px;
-    color: #a47a63;
+  font-size: 35px;
+  color: #b88769;
+  margin-bottom: 14px;
+  animation: heartbeat 2s infinite;
 }
 
 .footer-text {
-    margin-top: 15px;
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 22px;
-
-    color: #775d4f;
+  font: 400 clamp(21px, 3vw, 27px)/1.55 "Cormorant Garamond", serif;
+  color: #76533e;
+  margin-bottom: 16px;
 }
 
 .footer-small {
-    margin-top: 10px;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    color: #a28c7e;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #987963;
+  padding-bottom: 15px;
 }
 
+/* AJUSTES PARA MÓVILES */
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+@media (max-width: 650px) {
+  #cover {
+    background-position: 58% center;
+  }
 
-@media (max-width: 700px) {
+  .cover-small {
+    letter-spacing: 2.5px;
+  }
 
-    #cover {
-        background-position: center center;
-    }
+  .cover-title {
+    font-size: clamp(40px, 12vw, 58px);
+  }
 
-    .cover-content {
-        padding: 30px 18px;
-    }
+  .giraffe-container {
+    height: 205px;
+  }
 
-    .cover-small {
-        font-size: 10px;
-        letter-spacing: 2.5px;
-    }
+  .giraffe {
+    height: 205px;
+    width: min(280px, 78vw);
+  }
 
-    .cover-title {
-        font-size: clamp(44px, 14vw, 65px);
-    }
+  .envelope {
+    height: 175px;
+    width: min(290px, 82vw);
+  }
 
-    .cover-text {
-        font-size: 13px;
-        line-height: 1.7;
-    }
+  .envelope-body::before {
+    border-left-width: 145px;
+    border-top-width: 88px;
+  }
 
-    .cover-heart {
-        font-size: 50px;
-        margin-top: 22px;
-    }
+  .envelope-body::after {
+    border-right-width: 145px;
+    border-top-width: 88px;
+  }
 
-    .discover-btn {
-        padding: 15px 25px;
-        font-size: 10px;
-    }
+  .envelope-flap {
+    border-left-width: 145px;
+    border-right-width: 145px;
+    border-top-width: 95px;
+  }
 
+  .envelope.open .paper {
+    top: -100px;
+  }
 
-    /* =====================================================
-       SOBRE
-    ===================================================== */
+  .paper {
+    height: 120px;
+  }
 
-    #letterSection {
-        padding: 60px 15px;
-    }
+  .envelope-label {
+    font-size: 18px;
+    bottom: 24px;
+  }
 
-    .letter-title {
-        font-size: 45px;
-    }
+  .star-seal {
+    top: 73px;
+  }
 
-    .letter-subtitle {
-        font-size: 13px;
-    }
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 
-    .animalitos {
-        width: 230px;
-        max-height: 150px;
-    }
+  .photo-card {
+    border-width: 5px;
+  }
 
+  .cloud {
+    min-width: 280px;
+    min-height: 260px;
+    width: 85vw;
+    height: 55vh;
+  }
 
-    /* JIRAFA */
+  .cloud-left {
+    left: -90vw;
+  }
 
-    .giraffe-container {
-        height: 105px;
-    }
+  .cloud-right {
+    right: -90vw;
+  }
 
-    .giraffe {
-        width: 120px;
-        max-height: 105px;
-    }
-
-
-    /* SOBRE */
-
-    .envelope {
-        width: 250px;
-        height: 165px;
-    }
-
-    .envelope-flap {
-        border-left-width: 125px;
-        border-right-width: 125px;
-        border-top-width: 88px;
-    }
-
-    .envelope-body::before {
-        border-left-width: 125px;
-        border-top-width: 82px;
-    }
-
-    .envelope-body::after {
-        border-right-width: 125px;
-        border-top-width: 82px;
-    }
-
-    .paper {
-        height: 110px;
-        top: 32px;
-    }
-
-    .star-seal {
-        top: 78px;
-        width: 48px;
-        height: 48px;
-    }
-
-    .envelope-hint {
-        font-size: 20px;
-        padding: 0 10px;
-    }
-
-
-    /* =====================================================
-       NUBES
-    ===================================================== */
-
-    .cloud {
-        width: 230px;
-        height: 100px;
-    }
-
-    .cloud::before {
-        width: 120px;
-        height: 120px;
-
-        left: 25px;
-        bottom: 10px;
-    }
-
-    .cloud::after {
-        width: 95px;
-        height: 95px;
-
-        right: 25px;
-        bottom: 8px;
-    }
-
-
-    /* =====================================================
-       REVELACIÓN
-    ===================================================== */
-
-    #reveal {
-        padding: 70px 15px;
-    }
-
-    .reveal-title {
-        font-size: clamp(52px, 16vw, 75px);
-    }
-
-    .reveal-text {
-        font-size: 22px;
-    }
-
-    .baby-message {
-        font-size: 40px;
-    }
-
-    .final-message {
-        font-size: 14px;
-    }
-
-
-    /* =====================================================
-       FOTOS
-    ===================================================== */
-
-    .photos-title {
-        margin-top: 75px;
-        font-size: 38px;
-    }
-
-    .photo-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-        gap: 25px;
-    }
-
-    .photo-card {
-        min-height: 300px;
-    }
-
-    .photo-card img,
-    .photo-placeholder {
-        height: 280px;
-    }
-
+  #reveal {
+    padding-top: 58px;
+  }
 }
-
-
-/* =========================================================
-   PANTALLAS MUY PEQUEÑAS
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .cover-title {
-        font-size: 42px;
-    }
-
-    .envelope {
-        width: 230px;
-        height: 150px;
-    }
-
-    .envelope-flap {
-        border-left-width: 115px;
-        border-right-width: 115px;
-        border-top-width: 80px;
-    }
-
-    .envelope-body::before {
-        border-left-width: 115px;
-    }
-
-    .envelope-body::after {
-        border-right-width: 115px;
-    }
-
-    .star-seal {
-        top: 72px;
-    }
-
-    .giraffe-container {
-        height: 95px;
-    }
-
-    .giraffe {
-        width: 105px;
-        max-height: 95px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ======================================================
-     PORTADA
-====================================================== -->
-
+<!-- PORTADA -->
 <section id="cover">
+  <div class="cover-overlay"></div>
 
-    <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <p class="cover-small">Una noticia llena de ternura</p>
 
-    <div class="cover-content">
+    <h1 class="cover-title">
+      <span>Aquí hay algo</span>
+      <span>con amor para ustedes...</span>
+    </h1>
 
-        <div class="cover-small">
-            Un momento especial
-        </div>
+    <div class="cover-heart" aria-hidden="true">♥</div>
 
-        <h1 class="cover-title">
-            <span>Tenemos algo</span>
-            <span>muy bonito para ustedes</span>
-        </h1>
-
-        <p class="cover-text">
-            Hay momentos que merecen ser descubiertos
-            poco a poco. Sin prisas. Y este es uno de ellos.
-        </p>
-
-        <div class="cover-heart">
-            ♥
-        </div>
-
-        <button
-            class="discover-btn"
-            onclick="openCapsule()"
-        >
-            DESCUBRIR LA SORPRESA
-        </button>
-
-    </div>
-
+    <button
+      class="discover-btn"
+      type="button"
+      onclick="openCapsule()">
+      Descubrir la sorpresa
+    </button>
+  </div>
 </section>
 
-
-
-<!-- ======================================================
-     CARTA Y SOBRE
-====================================================== -->
-
+<!-- SOBRE Y JIRAFA -->
 <section id="letterSection">
+  <div class="letter-content">
 
-    <div class="letter-content">
+    <h2 class="letter-title">
+      Un pequeño secreto para compartir
+    </h2>
 
-        <h2 class="letter-title">
-            Hay algo para ustedes…
-        </h2>
+    <p class="letter-subtitle">
+      Se acerca un momento muy bonito. Tómense un instante,
+      abran el sobre y descubran lo que hemos preparado
+      con tanta ilusión.
+    </p>
 
-        <p class="letter-subtitle">
-            Una pequeña sorpresa preparada con mucho cariño.
-            Abran el sobre para descubrirla.
-        </p>
+    <div class="envelope-area">
 
-
-        <!-- ANIMALITOS: PERMANECEN EN LA CARTA -->
-
+      <div class="giraffe-container">
         <img
-            src="Animalitos.png"
-            class="animalitos"
-            alt="Animalitos"
-        >
+          src="jirafa.png"
+          class="giraffe"
+          alt="Jirafa de peluche"
+          onerror="this.style.display='none'">
+      </div>
 
+      <div
+        class="envelope"
+        id="envelope"
+        role="button"
+        tabindex="0"
+        aria-label="Abrir el sobre"
+        onclick="openEnvelope()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openEnvelope();}">
 
-        <div class="envelope-area">
+        <div class="envelope-body"></div>
 
-
-            <!-- =================================================
-                 JIRAFA ENCIMA DEL SOBRE
-            ================================================== -->
-
-            <div class="giraffe-container">
-
-                <img
-                    src="jirafa.png"
-                    class="giraffe"
-                    alt="Jirafa"
-                >
-
-            </div>
-
-
-            <!-- =================================================
-                 SOBRE
-            ================================================== -->
-
-            <div
-                class="envelope"
-                id="envelope"
-                onclick="openEnvelope()"
-            >
-
-                <div class="envelope-body"></div>
-
-                <div class="paper"></div>
-
-                <div class="envelope-flap"></div>
-
-                <div class="star-seal">
-                    ★
-                </div>
-
-            </div>
-
-
-            <p class="envelope-hint">
-                ✦ Hagan click en el sobre para descubrirlo ✦
-            </p>
-
+        <div class="envelope-label">
+          Tenemos algo que contarles...
         </div>
 
-    </div>
+        <div class="paper"></div>
+        <div class="envelope-flap"></div>
 
+        <div class="star-seal" aria-hidden="true">♥</div>
+      </div>
+
+      <p class="envelope-hint">
+        ♥ Haz clic para descubrirlo ♥
+      </p>
+
+    </div>
+  </div>
 </section>
 
+<!-- NUBES -->
+<div id="cloudTransition" aria-hidden="true">
+  <div class="cloud-light"></div>
 
+  <div class="cloud cloud-left c1"></div>
+  <div class="cloud cloud-left c2"></div>
+  <div class="cloud cloud-left c3"></div>
+  <div class="cloud cloud-left c4"></div>
+  <div class="cloud cloud-left c5"></div>
+  <div class="cloud cloud-left c6"></div>
 
-<!-- ======================================================
-     TRANSICIÓN DE NUBES
-====================================================== -->
-
-<div id="cloudTransition">
-
-    <div class="cloud-light"></div>
-
-    <div class="clouds">
-
-        <!-- NUBES IZQUIERDAS -->
-
-        <div class="cloud cloud-left-1"></div>
-
-        <div class="cloud cloud-left-2"></div>
-
-        <div class="cloud cloud-left-3"></div>
-
-
-        <!-- NUBES DERECHAS -->
-
-        <div class="cloud cloud-right-1"></div>
-
-        <div class="cloud cloud-right-2"></div>
-
-        <div class="cloud cloud-right-3"></div>
-
-    </div>
-
+  <div class="cloud cloud-right c1"></div>
+  <div class="cloud cloud-right c2"></div>
+  <div class="cloud cloud-right c3"></div>
+  <div class="cloud cloud-right c4"></div>
+  <div class="cloud cloud-right c5"></div>
+  <div class="cloud cloud-right c6"></div>
 </div>
 
-
-
-<!-- ======================================================
-     REVELACIÓN
-====================================================== -->
-
+<!-- REVELACIÓN -->
 <section id="reveal">
+  <div class="reveal-content">
 
-    <div class="reveal-content">
+    <p class="reveal-small">
+      Una nueva ilusión comienza
+    </p>
 
-        <div class="reveal-small">
-            Una noticia llena de amor
+    <h2 class="reveal-title">
+      ¡La familia <span>crece!</span>
+    </h2>
+
+    <div class="elephant-wrap">
+      <img
+        src="Animalitos.png"
+        class="animalitos elephant-illustration"
+        alt="Animalitos tiernos celebrando la llegada de un bebé"
+        onerror="this.style.display='none'">
+    </div>
+
+    <p class="reveal-text">
+      Hay noticias que llenan el alma de luz y hacen
+      que el corazón sonría antes de decir una sola palabra.
+    </p>
+
+    <p class="baby-message">
+      ¡Estamos esperando un bebé!
+    </p>
+
+    <p class="final-message">
+      Hoy comienza una nueva aventura para nuestra familia:
+      llegan sueños por imaginar, pequeñas manos que abrazar
+      y un amor que crecerá cada día. Queremos compartir
+      esta alegría con ustedes, porque la vida se vuelve aún
+      más hermosa cuando las noticias bonitas se celebran
+      junto a las personas que llevamos en el corazón.
+    </p>
+
+    <!-- FOTOGRAFÍAS -->
+    <h3 class="photos-title">
+      El comienzo de una historia inolvidable
+    </h3>
+
+    <p class="photos-subtitle">
+      Un recuerdo de este momento tan especial para guardar siempre.
+    </p>
+
+    <div class="photo-grid">
+
+      <div class="photo-card">
+        <img src="foto1.jpeg" alt="Recuerdo familiar 1"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
         </div>
+      </div>
 
-
-        <h2 class="reveal-title">
-            ¡La familia <span>crece!</span>
-        </h2>
-
-
-        <p class="reveal-text">
-            Julio César y yo tenemos un pequeño secreto
-            que llevábamos un tiempo esperando compartir
-            con ustedes…
-        </p>
-
-
-        <div class="baby-message">
-            ¡Estamos esperando un bebé!
+      <div class="photo-card">
+        <img src="foto2.jpeg" alt="Recuerdo familiar 2"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
         </div>
+      </div>
 
-
-        <p class="final-message">
-            La vida nos ha regalado una de las noticias
-            más bonitas que podíamos imaginar.
-            Pronto seremos uno más y estamos deseando
-            compartir esta nueva aventura con ustedes.
-        </p>
-
-
-
-        <!-- ==================================================
-             FOTOS
-        ================================================== -->
-
-        <h3 class="photos-title">
-            Algunos momentos para recordar
-        </h3>
-
-        <p class="photos-subtitle">
-            Seis recuerdos de una historia que sigue creciendo.
-        </p>
-
-
-        <div class="photo-grid">
-
-
-            <!-- FOTO 1 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto1.jpeg"
-                    alt="Foto 1"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
-            <!-- FOTO 2 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto2.jpeg"
-                    alt="Foto 2"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
-            <!-- FOTO 3 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto3.jpeg"
-                    alt="Foto 3"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
-            <!-- FOTO 4 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto4.jpeg"
-                    alt="Foto 4"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
-            <!-- FOTO 5 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto5.jpeg"
-                    alt="Foto 5"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
-            <!-- FOTO 6 -->
-
-            <div class="photo-card">
-
-                <img
-                    src="foto6.jpeg"
-                    alt="Foto 6"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                >
-
-                <div
-                    class="photo-placeholder"
-                    style="display:none;"
-                >
-                    Tu foto aquí
-                </div>
-
-            </div>
-
-
+      <div class="photo-card">
+        <img src="foto3.jpeg" alt="Recuerdo familiar 3"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
         </div>
+      </div>
 
-
-
-        <!-- ==================================================
-             FOOTER
-        ================================================== -->
-
-        <div class="footer">
-
-            <div class="footer-heart">
-                ♥
-            </div>
-
-            <p class="footer-text">
-                Hay momentos que duran un instante,
-                pero se quedan para siempre en el corazón.
-            </p>
-
-            <div class="footer-small">
-                Un recuerdo para toda la vida
-            </div>
-
+      <div class="photo-card">
+        <img src="foto4.jpeg" alt="Recuerdo familiar 4"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
         </div>
+      </div>
+
+      <div class="photo-card">
+        <img src="foto5.jpeg" alt="Recuerdo familiar 5"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <img src="foto6.jpeg" alt="Recuerdo familiar 6"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">
+          Un recuerdo especial
+        </div>
+      </div>
 
     </div>
 
+    <!-- MENSAJE FINAL -->
+    <footer class="footer">
+
+      <div class="footer-heart" aria-hidden="true">♥</div>
+
+      <p class="footer-text">
+        Que este bebé llegue rodeado de ternura,
+        encuentre siempre un hogar lleno de risas
+        y crezca sabiendo que hay una familia entera
+        deseando darle amor.
+      </p>
+
+      <p class="footer-small">
+        Con todo nuestro amor para ustedes
+      </p>
+
+    </footer>
+  </div>
 </section>
 
-
-
-<!-- ======================================================
-     JAVASCRIPT
-====================================================== -->
-
 <script>
-
-
-/* =========================================================
-   ABRIR CÁPSULA
-========================================================= */
+let envelopeOpening = false;
 
 function openCapsule() {
+  const cover = document.getElementById("cover");
+  const letter = document.getElementById("letterSection");
 
-    const cover =
-        document.getElementById("cover");
+  cover.style.display = "none";
+  letter.style.display = "flex";
 
-    const letter =
-        document.getElementById("letterSection");
-
-
-    cover.style.display = "none";
-
-    letter.style.display = "flex";
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-
+  window.scrollTo({
+    top: 0,
+    behavior: "auto"
+  });
 }
-
-
-
-/* =========================================================
-   ABRIR SOBRE
-========================================================= */
 
 function openEnvelope() {
+  if (envelopeOpening) return;
 
-    const envelope =
-        document.getElementById("envelope");
+  envelopeOpening = true;
 
-    const cloudTransition =
-        document.getElementById("cloudTransition");
+  const envelope = document.getElementById("envelope");
+  const clouds = document.getElementById("cloudTransition");
+  const letter = document.getElementById("letterSection");
+  const reveal = document.getElementById("reveal");
 
-    const letter =
-        document.getElementById("letterSection");
+  envelope.classList.add("open");
+  envelope.setAttribute("aria-label", "Sobre abierto");
 
-    const reveal =
-        document.getElementById("reveal");
+  /*
+    Primero la carta sale del sobre.
+    Después entran las nubes y cubren la pantalla.
+  */
+  window.setTimeout(() => {
+    clouds.style.display = "block";
 
+    // Reinicia la animación para evitar que se quede bloqueada.
+    clouds.classList.remove("active");
+    void clouds.offsetWidth;
+    clouds.classList.add("active");
+  }, 1200);
 
-    /* EVITAR DOBLE CLIC */
+  /*
+    La página final se prepara detrás de las nubes.
+    Así no aparece una pantalla vacía durante la transición.
+  */
+  window.setTimeout(() => {
+    letter.style.display = "none";
+    reveal.style.display = "block";
 
-    if (
-        envelope.classList.contains("open")
-    ) {
-        return;
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
+  }, 2800);
 
+  /*
+    Las nubes completan su movimiento de cinco segundos
+    y se retiran para revelar la noticia.
+  */
+  window.setTimeout(() => {
+    clouds.classList.remove("active");
+    clouds.style.display = "none";
 
-    /* =====================================================
-       PRIMERO: ABRIMOS EL SOBRE
-    ===================================================== */
+    reveal.classList.add("visible");
 
-    envelope.classList.add("open");
-
-
-    /* =====================================================
-       DESPUÉS: COMIENZAN A APARECER LAS NUBES
-    ===================================================== */
-
-    setTimeout(function() {
-
-        cloudTransition.style.display = "block";
-
-        /*
-         * Forzamos un pequeño repaint para que
-         * la animación CSS comience correctamente.
-         */
-
-        void cloudTransition.offsetWidth;
-
-        cloudTransition.classList.add("active");
-
-    }, 1150);
-
-
-    /* =====================================================
-       OCULTAMOS LA CARTA CUANDO LAS NUBES YA CUBREN
-       LA PANTALLA
-    ===================================================== */
-
-    setTimeout(function() {
-
-        letter.style.display = "none";
-
-        reveal.style.display = "block";
-
-        /*
-         * Reiniciamos el scroll mientras la pantalla
-         * todavía está cubierta por las nubes.
-         */
-
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
-
-    }, 2450);
-
-
-    /* =====================================================
-       LAS NUBES TERMINAN DE SEPARARSE
-       Y REVELAMOS LA INFORMACIÓN POCO A POCO
-    ===================================================== */
-
-    setTimeout(function() {
-
-        cloudTransition.classList.remove("active");
-
-        cloudTransition.style.display = "none";
-
-
-        /*
-         * Activamos la entrada suave de la revelación.
-         */
-
-        requestAnimationFrame(function() {
-
-            reveal.classList.add("visible");
-
-        });
-
-    }, 5050);
-
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
+  }, 6250);
 }
-
 </script>
 
 </body>
