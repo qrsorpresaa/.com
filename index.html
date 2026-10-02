@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Una sorpresa especial</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +40,7 @@ button {
   font: inherit;
 }
 
-/* PORTADA */
+/* PORTADA: CAFÉ CLARO CON CORAZONES */
 
 #cover {
   min-height: 100vh;
@@ -52,30 +53,87 @@ button {
   text-align: center;
   overflow: hidden;
   padding: 32px 18px;
-
-  background-color: #c5a184;
-  background-image:
-    linear-gradient(
-      115deg,
-      rgba(105, 68, 44, 0.25),
-      rgba(84, 52, 34, 0.48)
-    ),
-    url("https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=2000&q=90");
-
-  background-position: center 58%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background:
+    radial-gradient(ellipse at 20% 20%, #ead5c3 0%, transparent 42%),
+    radial-gradient(ellipse at 80% 75%, #d8b99f 0%, transparent 45%),
+    linear-gradient(135deg, #ead8c7, #cba98d);
 }
 
 .cover-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(76, 48, 31, 0.12),
-    rgba(74, 46, 29, 0.32)
-  );
   z-index: -1;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255, 250, 245, 0.20),
+      rgba(120, 83, 59, 0.12));
+}
+
+.cover-hearts {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cover-hearts span {
+  position: absolute;
+  color: rgba(255, 248, 240, 0.55);
+  font-size: clamp(18px, 3vw, 35px);
+  animation: heartFloat 8s ease-in-out infinite;
+}
+
+.cover-hearts span:nth-child(1) {
+  top: 12%;
+  left: 12%;
+  animation-delay: -1s;
+}
+
+.cover-hearts span:nth-child(2) {
+  top: 24%;
+  right: 14%;
+  font-size: 25px;
+  animation-delay: -4s;
+}
+
+.cover-hearts span:nth-child(3) {
+  top: 72%;
+  left: 17%;
+  font-size: 28px;
+  animation-delay: -2s;
+}
+
+.cover-hearts span:nth-child(4) {
+  top: 78%;
+  right: 12%;
+  font-size: 21px;
+  animation-delay: -6s;
+}
+
+.cover-hearts span:nth-child(5) {
+  top: 43%;
+  left: 6%;
+  font-size: 17px;
+  animation-delay: -3s;
+}
+
+.cover-hearts span:nth-child(6) {
+  top: 48%;
+  right: 7%;
+  font-size: 30px;
+  animation-delay: -5s;
+}
+
+@keyframes heartFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-8deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(-14px) rotate(8deg);
+    opacity: 0.9;
+  }
 }
 
 .cover-content {
@@ -85,7 +143,7 @@ button {
   flex-direction: column;
   position: relative;
   color: var(--cream);
-  text-shadow: 0 2px 15px rgba(48, 29, 18, 0.32);
+  text-shadow: 0 2px 15px rgba(85, 55, 37, 0.25);
 }
 
 .cover-small {
@@ -93,7 +151,7 @@ button {
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 17px;
-  color: #fff0e2;
+  color: #fff9f2;
 }
 
 .cover-title {
@@ -393,7 +451,7 @@ button {
   50% { opacity: 1; }
 }
 
-/* NUBES: SE JUNTAN EN EL CENTRO Y SE ABREN */
+/* NUBES */
 
 #cloudTransition {
   position: fixed;
@@ -579,25 +637,37 @@ button {
   }
 }
 
-.reveal-text {
-  max-width: 680px;
-  margin: 0 auto 18px;
-  font: 400 clamp(19px, 3vw, 25px)/1.6 "Cormorant Garamond", serif;
-  color: #795b47;
-}
+/* MENSAJE DE LA CARTA */
 
-.baby-message {
-  font: 600 clamp(25px, 4.5vw, 40px)/1.25 "Cormorant Garamond", serif;
-  color: #9a6848;
-  margin: 24px 0;
-}
-
-.final-message {
+.announcement {
   max-width: 760px;
-  margin: 0 auto 50px;
-  font-size: 14px;
-  line-height: 2;
-  color: #765e4f;
+  margin: 0 auto 42px;
+  padding: 34px clamp(18px, 5vw, 48px);
+  background: rgba(255, 250, 245, 0.58);
+  border: 1px solid rgba(194, 159, 132, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(95, 66, 46, 0.08);
+  color: #795b47;
+  font: 400 clamp(18px, 2.8vw, 23px)/1.8 "Cormorant Garamond", serif;
+}
+
+.announcement p {
+  margin-bottom: 17px;
+}
+
+.announcement p:last-child {
+  margin-bottom: 0;
+}
+
+.announcement .announcement-heading {
+  font: 600 clamp(26px, 4vw, 36px)/1.35 "Cormorant Garamond", serif;
+  color: #9a6848;
+  margin-bottom: 22px;
+}
+
+.announcement .announcement-final {
+  font-weight: 600;
+  color: #8b6046;
 }
 
 /* FOTOGRAFÍAS */
@@ -635,11 +705,13 @@ button {
   animation: photoIn 0.8s ease forwards;
 }
 
-.photo-card:nth-child(2) { animation-delay: 0.12s; }
-.photo-card:nth-child(3) { animation-delay: 0.24s; }
-.photo-card:nth-child(4) { animation-delay: 0.36s; }
-.photo-card:nth-child(5) { animation-delay: 0.48s; }
-.photo-card:nth-child(6) { animation-delay: 0.6s; }
+.photo-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.photo-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
 
 .photo-card img {
   width: 100%;
@@ -697,10 +769,6 @@ button {
 /* AJUSTES PARA MÓVILES */
 
 @media (max-width: 650px) {
-  #cover {
-    background-position: 58% center;
-  }
-
   .cover-small {
     letter-spacing: 2.5px;
   }
@@ -783,6 +851,10 @@ button {
   #reveal {
     padding-top: 58px;
   }
+
+  .announcement {
+    padding: 26px 18px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -803,6 +875,15 @@ button {
 <!-- PORTADA -->
 <section id="cover">
   <div class="cover-overlay"></div>
+
+  <div class="cover-hearts" aria-hidden="true">
+    <span>♥</span>
+    <span>♡</span>
+    <span>♥</span>
+    <span>♡</span>
+    <span>♥</span>
+    <span>♡</span>
+  </div>
 
   <div class="cover-content">
     <p class="cover-small">Una noticia llena de ternura</p>
@@ -899,14 +980,6 @@ button {
 <section id="reveal">
   <div class="reveal-content">
 
-    <p class="reveal-small">
-      Una nueva ilusión comienza
-    </p>
-
-    <h2 class="reveal-title">
-      ¡La familia <span>crece!</span>
-    </h2>
-
     <div class="elephant-wrap">
       <img
         src="Animalitos.png"
@@ -915,25 +988,37 @@ button {
         onerror="this.style.display='none'">
     </div>
 
-    <p class="reveal-text">
-      Hay noticias que llenan el alma de luz y hacen
-      que el corazón sonría antes de decir una sola palabra.
-    </p>
+    <div class="announcement">
 
-    <p class="baby-message">
-      ¡Estamos esperando un bebé!
-    </p>
+      <p class="announcement-heading">
+        👶🏽✨ ¡La familia crece! ✨👶🏽
+      </p>
 
-    <p class="final-message">
-      Hoy comienza una nueva aventura para nuestra familia:
-      llegan sueños por imaginar, pequeñas manos que abrazar
-      y un amor que crecerá cada día. Queremos compartir
-      esta alegría con ustedes, porque la vida se vuelve aún
-      más hermosa cuando las noticias bonitas se celebran
-      junto a las personas que llevamos en el corazón.
-    </p>
+      <p>
+        Julio César y yo tenemos un pequeño secreto que ya no podemos guardar… 💕
+        <br>
+        ¡Estamos esperando un bebé! 🍼🥰
+      </p>
 
-    <!-- FOTOGRAFÍAS -->
+      <p>
+        Nuestros corazones están llenos de amor, ilusión y felicidad al saber que pronto llegará una personita que cambiará nuestras vidas para siempre.
+      </p>
+
+      <p>
+        Prepárense para muchos abrazos, sonrisas y una nueva razón para celebrar. ❤️
+      </p>
+
+      <p>
+        ¡Sí, van a ser tías-abuelas, tí@s, prim@s! 👶🏽🎉
+      </p>
+
+      <p class="announcement-final">
+        Hagan campo para un@ más 🥰
+      </p>
+
+    </div>
+
+    <!-- SOLAMENTE TRES FOTOGRAFÍAS -->
     <h3 class="photos-title">
       El comienzo de una historia inolvidable
     </h3>
@@ -945,7 +1030,9 @@ button {
     <div class="photo-grid">
 
       <div class="photo-card">
-        <img src="foto1.jpeg" alt="Recuerdo familiar 1"
+        <img
+          src="foto1.jpeg"
+          alt="Recuerdo familiar 1"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="photo-placeholder" style="display:none">
           Un recuerdo especial
@@ -953,7 +1040,9 @@ button {
       </div>
 
       <div class="photo-card">
-        <img src="foto2.jpeg" alt="Recuerdo familiar 2"
+        <img
+          src="foto2.jpeg"
+          alt="Recuerdo familiar 2"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="photo-placeholder" style="display:none">
           Un recuerdo especial
@@ -961,31 +1050,9 @@ button {
       </div>
 
       <div class="photo-card">
-        <img src="foto3.jpeg" alt="Recuerdo familiar 3"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          Un recuerdo especial
-        </div>
-      </div>
-
-      <div class="photo-card">
-        <img src="foto4.jpeg" alt="Recuerdo familiar 4"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          Un recuerdo especial
-        </div>
-      </div>
-
-      <div class="photo-card">
-        <img src="foto5.jpeg" alt="Recuerdo familiar 5"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">
-          Un recuerdo especial
-        </div>
-      </div>
-
-      <div class="photo-card">
-        <img src="foto6.jpeg" alt="Recuerdo familiar 6"
+        <img
+          src="foto3.jpeg"
+          alt="Recuerdo familiar 3"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="photo-placeholder" style="display:none">
           Un recuerdo especial
@@ -1011,6 +1078,7 @@ button {
       </p>
 
     </footer>
+
   </div>
 </section>
 
@@ -1050,7 +1118,6 @@ function openEnvelope() {
   window.setTimeout(() => {
     clouds.style.display = "block";
 
-    // Reinicia la animación para evitar que se quede bloqueada.
     clouds.classList.remove("active");
     void clouds.offsetWidth;
     clouds.classList.add("active");
@@ -1058,7 +1125,6 @@ function openEnvelope() {
 
   /*
     La página final se prepara detrás de las nubes.
-    Así no aparece una pantalla vacía durante la transición.
   */
   window.setTimeout(() => {
     letter.style.display = "none";
@@ -1071,8 +1137,7 @@ function openEnvelope() {
   }, 2800);
 
   /*
-    Las nubes completan su movimiento de cinco segundos
-    y se retiran para revelar la noticia.
+    Las nubes completan su movimiento y revelan la noticia.
   */
   window.setTimeout(() => {
     clouds.classList.remove("active");
